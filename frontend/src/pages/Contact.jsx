@@ -40,17 +40,19 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white">
       <section className="pt-32 pb-20 px-8">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="max-w-3xl mb-16">
-            <p className="text-sm text-gray-500 tracking-wide mb-6 uppercase">
-              Contact Us
-            </p>
-            <h1 className="text-6xl md:text-7xl font-light text-gray-900 leading-tight mb-8">
-              Let's discuss your energy future
-            </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Get in touch with our team to learn how DAVVO Energy can transform your distributed energy infrastructure.
-            </p>
+        <div className="max-w-[1600px] mx-auto">
+          <div className="border-2 border-black px-16 py-20 mb-16">
+            <div className="max-w-2xl">
+              <p className="text-xs text-gray-500 tracking-widest mb-6 uppercase font-light">
+                Contact Us
+              </p>
+              <h1 className="text-5xl md:text-6xl font-light text-gray-900 leading-tight mb-8">
+                Let's discuss your energy future
+              </h1>
+              <p className="text-base text-gray-600 leading-relaxed font-light">
+                Get in touch with our team to learn how DAVVO Energy can transform your distributed energy infrastructure.
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">

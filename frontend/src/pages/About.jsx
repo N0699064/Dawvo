@@ -25,20 +25,22 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white">
       <section className="pt-32 pb-20 px-8">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="max-w-3xl">
-            <p className="text-sm text-gray-500 tracking-wide mb-6 uppercase">
-              About DAVVO Energy
-            </p>
-            <h1 className="text-6xl md:text-7xl font-light text-gray-900 leading-tight mb-8">
-              Pioneering the future of clean energy
-            </h1>
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              DAVVO Energy is at the forefront of AI-driven energy optimization, helping organizations worldwide transform their distributed energy resources into intelligent, resilient, and sustainable infrastructure.
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Founded on the principle that clean energy should be accessible, efficient, and scalable, we combine cutting-edge artificial intelligence with deep energy sector expertise to deliver solutions that make a real difference.
-            </p>
+        <div className="max-w-[1600px] mx-auto">
+          <div className="border-2 border-black px-16 py-20">
+            <div className="max-w-2xl">
+              <p className="text-xs text-gray-500 tracking-widest mb-6 uppercase font-light">
+                About DAVVO Energy
+              </p>
+              <h1 className="text-5xl md:text-6xl font-light text-gray-900 leading-tight mb-8">
+                Pioneering the future of clean energy
+              </h1>
+              <p className="text-base text-gray-600 leading-relaxed mb-6 font-light">
+                DAVVO Energy is at the forefront of AI-driven energy optimization, helping organizations worldwide transform their distributed energy resources into intelligent, resilient, and sustainable infrastructure.
+              </p>
+              <p className="text-base text-gray-600 leading-relaxed font-light">
+                Founded on the principle that clean energy should be accessible, efficient, and scalable, we combine cutting-edge artificial intelligence with deep energy sector expertise to deliver solutions that make a real difference.
+              </p>
+            </div>
           </div>
         </div>
       </section>

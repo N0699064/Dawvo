@@ -29,31 +29,33 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
+      {/* Hero Section with Black Border */}
       <section className="pt-32 pb-20 px-8">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="max-w-3xl">
-            <p className="text-sm text-gray-500 tracking-wide mb-6 uppercase">
-              Climate AI Optimisation Infrastructure
-            </p>
-            <h1 className="text-6xl md:text-7xl font-light text-gray-900 leading-tight mb-8">
-              AI-driven optimisation for distributed energy performance, resilience, and scalable clean infrastructure
-            </h1>
-            <p className="text-lg text-gray-600 mb-10 leading-relaxed">
-              DAVVO Energy leverages advanced artificial intelligence to transform how distributed energy resources are managed, optimized, and scaled for a sustainable future.
-            </p>
-            <div className="flex gap-4">
-              <Button 
-                className="bg-[#2E7D32] hover:bg-[#1B5E20] text-white px-8 py-6 rounded-md text-base transition-all duration-300"
-              >
-                Learn More <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                variant="outline"
-                className="border-2 border-gray-300 hover:border-[#2E7D32] text-gray-700 px-8 py-6 rounded-md text-base transition-all duration-300"
-              >
-                Get Started
-              </Button>
+        <div className="max-w-[1600px] mx-auto">
+          <div className="border-2 border-black px-16 py-20">
+            <div className="max-w-2xl">
+              <p className="text-xs text-gray-500 tracking-widest mb-6 uppercase font-light">
+                Climate AI Optimisation Infrastructure
+              </p>
+              <h1 className="text-5xl md:text-6xl font-light text-gray-900 leading-tight mb-8">
+                AI-driven optimisation for distributed energy performance, resilience, and scalable clean infrastructure.
+              </h1>
+              <p className="text-base text-gray-600 mb-10 leading-relaxed font-light">
+                DAVVO Energy builds infrastructure-grade climate AI systems that optimise distributed energy assets, enhance grid resilience, and accelerate clean energy integration.
+              </p>
+              <div className="flex gap-4">
+                <Button 
+                  className="bg-[#2E7D32] hover:bg-[#1B5E20] text-white px-8 py-6 rounded-md text-sm font-medium transition-all duration-300"
+                >
+                  Explore the Platform
+                </Button>
+                <Button 
+                  variant="outline"
+                  className="border-2 border-gray-900 hover:bg-gray-50 text-gray-900 px-8 py-6 rounded-md text-sm font-medium transition-all duration-300"
+                >
+                  Partner With Us
+                </Button>
+              </div>
             </div>
           </div>
         </div>

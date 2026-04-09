@@ -104,18 +104,20 @@ const PlatformArchitecture = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="max-w-3xl">
-            <p className="text-sm text-gray-500 tracking-wide mb-6 uppercase">
-              Platform Architecture
-            </p>
-            <h1 className="text-6xl md:text-7xl font-light text-gray-900 leading-tight mb-8">
-              Built for scale, designed for resilience
-            </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Our platform architecture combines cutting-edge technology with proven infrastructure patterns to deliver a robust, scalable solution for distributed energy optimization.
-            </p>
+      <section className="pt-32 pb-20 px-8">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="border-2 border-black px-16 py-20">
+            <div className="max-w-2xl">
+              <p className="text-xs text-gray-500 tracking-widest mb-6 uppercase font-light">
+                Platform Architecture
+              </p>
+              <h1 className="text-5xl md:text-6xl font-light text-gray-900 leading-tight mb-8">
+                Built for scale, designed for resilience
+              </h1>
+              <p className="text-base text-gray-600 leading-relaxed font-light">
+                Our platform architecture combines cutting-edge technology with proven infrastructure patterns to deliver a robust, scalable solution for distributed energy optimization.
+              </p>
+            </div>
           </div>
         </div>
       </section>
