@@ -104,9 +104,9 @@ const PlatformArchitecture = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-8">
+      <section className="pt-48 pb-20 px-8">
         <div className="max-w-[1600px] mx-auto">
-          <div className="border-2 border-black px-16 py-20">
+          <div className="px-16 py-20">
             <div className="max-w-2xl">
               <p className="text-xs text-gray-500 tracking-widest mb-6 uppercase font-light">
                 Platform Architecture
