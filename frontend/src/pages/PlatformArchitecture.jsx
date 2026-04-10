@@ -142,39 +142,48 @@ const PlatformArchitecture = () => {
         </div>
       </section>
 
-      {/* Core Layers */}
-      <section className="py-16 px-8">
+      {/* Core Layers - 3D Circular Carousel */}
+      <section className="py-24 px-8">
         <div className="max-w-[1200px] mx-auto">
           <div className="px-8">
             <h2 
-              className="text-2xl font-light text-gray-900 mb-12 transition-all duration-600"
+              className="text-2xl font-light text-gray-900 mb-16 text-center transition-all duration-600"
               style={getVisibility(500, 3)}
             >
               Core Architecture Layers
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {layers.map((layer, index) => (
-                <div 
-                  key={index}
-                  className="group p-8 bg-white border border-gray-200 hover:border-gray-900 rounded-sm transition-all duration-300 hover:shadow-lg cursor-pointer"
-                  style={getVisibility(600 + index * 100, 4 + index)}
-                >
-                  <div className="flex items-start gap-6">
-                    <span className="text-5xl font-extralight text-gray-200 group-hover:text-gray-900 transition-colors duration-300">
-                      {layer.number}
-                    </span>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-normal text-gray-900 mb-3">
-                        {layer.title}
-                      </h3>
-                      <p className="text-sm text-gray-700 leading-relaxed font-light">
-                        {layer.description}
-                      </p>
+            <div 
+              className="carousel-3d-container"
+              style={getVisibility(600, 4)}
+            >
+              <div className="carousel-3d">
+                {layers.map((layer, index) => (
+                  <div 
+                    key={index}
+                    className="carousel-3d-item"
+                    style={{
+                      transform: `rotateY(${index * 90}deg) translateZ(450px)`
+                    }}
+                  >
+                    <div className="layer-card">
+                      <div className="flex items-start gap-6">
+                        <span className="text-5xl font-extralight text-gray-200">
+                          {layer.number}
+                        </span>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-normal text-gray-900 mb-3">
+                            {layer.title}
+                          </h3>
+                          <p className="text-sm text-gray-700 leading-relaxed font-light">
+                            {layer.description}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -266,7 +275,7 @@ const PlatformArchitecture = () => {
         </div>
       </section>
 
-      {/* CSS for Carousels */}
+      {/* CSS for Carousels and 3D Carousel */}
       <style jsx>{`
         .carousel-container {
           position: relative;
@@ -311,6 +320,88 @@ const PlatformArchitecture = () => {
 
         .carousel-track:hover {
           animation-play-state: paused;
+        }
+
+        /* 3D Circular Carousel */
+        .carousel-3d-container {
+          perspective: 2000px;
+          height: 500px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+        }
+
+        .carousel-3d {
+          position: relative;
+          width: 100%;
+          height: 400px;
+          transform-style: preserve-3d;
+          animation: rotate3d 30s linear infinite;
+        }
+
+        .carousel-3d:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes rotate3d {
+          0% {
+            transform: rotateY(0deg);
+          }
+          100% {
+            transform: rotateY(360deg);
+          }
+        }
+
+        .carousel-3d-item {
+          position: absolute;
+          width: 500px;
+          height: 100%;
+          left: 50%;
+          top: 50%;
+          margin-left: -250px;
+          margin-top: -200px;
+          transform-style: preserve-3d;
+          transition: opacity 0.5s;
+        }
+
+        .layer-card {
+          width: 100%;
+          height: 100%;
+          background: white;
+          border: 1px solid #e5e7eb;
+          border-radius: 2px;
+          padding: 3rem;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+          backface-visibility: hidden;
+          display: flex;
+          align-items: center;
+          transition: all 0.3s;
+        }
+
+        .layer-card:hover {
+          border-color: #111827;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+          .carousel-3d-container {
+            height: 400px;
+          }
+
+          .carousel-3d {
+            height: 300px;
+          }
+
+          .carousel-3d-item {
+            width: 320px;
+            margin-left: -160px;
+            margin-top: -150px;
+          }
+
+          .layer-card {
+            padding: 2rem;
+          }
         }
       `}</style>
     </div>
