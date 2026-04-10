@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const PlatformArchitecture = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [revealed, setRevealed] = useState(new Set());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,16 +13,29 @@ const PlatformArchitecture = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const getVisibility = (delay = 0) => {
+  const getVisibility = (delay = 0, index = 0) => {
     const threshold = 150 + delay;
     const progress = Math.min(Math.max((scrollY - threshold) / 300, 0), 1);
+    
+    // Mark as revealed once fully visible
+    if (progress >= 1 && !revealed.has(index)) {
+      setRevealed(new Set([...revealed, index]));
+    }
+    
+    // If already revealed, stay visible
+    if (revealed.has(index)) {
+      return {
+        opacity: 1,
+        transform: 'translateY(0px)'
+      };
+    }
+    
     return {
       opacity: progress,
       transform: `translateY(${(1 - progress) * 60}px)`
     };
   };
 
-  // Carousel 1: Technologies (scroll right)
   const technologies = [
     'Solar Energy Systems',
     'Battery Storage',
@@ -35,7 +49,6 @@ const PlatformArchitecture = () => {
     'System Integration'
   ];
 
-  // Carousel 2: Benefits (scroll left)
   const benefits = [
     '99.9% Uptime',
     'Real-time Data',
@@ -49,7 +62,6 @@ const PlatformArchitecture = () => {
     'Smart Coordination'
   ];
 
-  // Carousel 3: Features (scroll right)
   const features = [
     'Cloud-Native Architecture',
     'Multi-Region Deployment',
@@ -94,20 +106,20 @@ const PlatformArchitecture = () => {
         <div className="max-w-[1200px] mx-auto">
           <div className="px-8">
             <p 
-              className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
-              style={getVisibility(0)}
+              className="text-xs text-gray-500 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
+              style={getVisibility(0, 0)}
             >
               Platform Architecture
             </p>
             <h1 
               className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-600"
-              style={getVisibility(150)}
+              style={getVisibility(150, 1)}
             >
               Davwo Energy Platform Architecture
             </h1>
             <p 
-              className="text-base text-gray-600 leading-relaxed font-light transition-all duration-600"
-              style={getVisibility(300)}
+              className="text-base text-gray-800 leading-relaxed font-light transition-all duration-600"
+              style={getVisibility(300, 2)}
             >
               A Climate AI Optimisation Infrastructure platform designed to improve how distributed renewable energy systems are monitored, coordinated, and optimised through intelligent digital infrastructure.
             </p>
@@ -122,7 +134,7 @@ const PlatformArchitecture = () => {
             {[...technologies, ...technologies].map((tech, index) => (
               <div key={index} className="carousel-item">
                 <div className="px-8 py-4 bg-gray-50 rounded-full border border-gray-200 whitespace-nowrap">
-                  <span className="text-sm font-light text-gray-700">{tech}</span>
+                  <span className="text-sm font-light text-gray-800">{tech}</span>
                 </div>
               </div>
             ))}
@@ -136,7 +148,7 @@ const PlatformArchitecture = () => {
           <div className="px-8">
             <h2 
               className="text-2xl font-light text-gray-900 mb-12 transition-all duration-600"
-              style={getVisibility(500)}
+              style={getVisibility(500, 3)}
             >
               Core Architecture Layers
             </h2>
@@ -146,7 +158,7 @@ const PlatformArchitecture = () => {
                 <div 
                   key={index}
                   className="group p-8 bg-white border border-gray-200 hover:border-gray-900 rounded-sm transition-all duration-300 hover:shadow-lg cursor-pointer"
-                  style={getVisibility(600 + index * 100)}
+                  style={getVisibility(600 + index * 100, 4 + index)}
                 >
                   <div className="flex items-start gap-6">
                     <span className="text-5xl font-extralight text-gray-200 group-hover:text-gray-900 transition-colors duration-300">
@@ -156,7 +168,7 @@ const PlatformArchitecture = () => {
                       <h3 className="text-lg font-normal text-gray-900 mb-3">
                         {layer.title}
                       </h3>
-                      <p className="text-sm text-gray-600 leading-relaxed font-light">
+                      <p className="text-sm text-gray-700 leading-relaxed font-light">
                         {layer.description}
                       </p>
                     </div>
@@ -189,12 +201,12 @@ const PlatformArchitecture = () => {
           <div className="px-8">
             <div 
               className="transition-all duration-600"
-              style={getVisibility(1200)}
+              style={getVisibility(1200, 8)}
             >
               <h2 className="text-2xl font-light text-gray-900 mb-6">
                 Platform Integration
               </h2>
-              <p className="text-base text-gray-600 leading-relaxed font-light mb-8">
+              <p className="text-base text-gray-800 leading-relaxed font-light mb-8">
                 A unified system where users access clean energy technologies, systems are monitored in real time, artificial intelligence optimises performance, and distributed energy resources are intelligently coordinated.
               </p>
             </div>
@@ -209,7 +221,7 @@ const PlatformArchitecture = () => {
             {[...features, ...features].map((feature, index) => (
               <div key={index} className="carousel-item">
                 <div className="px-8 py-4 bg-gray-50 rounded-full border border-gray-200 whitespace-nowrap">
-                  <span className="text-sm font-light text-gray-700">{feature}</span>
+                  <span className="text-sm font-light text-gray-800">{feature}</span>
                 </div>
               </div>
             ))}
@@ -223,29 +235,29 @@ const PlatformArchitecture = () => {
           <div className="px-8">
             <div 
               className="transition-all duration-600"
-              style={getVisibility(1600)}
+              style={getVisibility(1600, 9)}
             >
               <h2 className="text-2xl font-light text-gray-900 mb-6">
                 Technology Vision
               </h2>
-              <p className="text-base text-gray-600 leading-relaxed font-light mb-4">
+              <p className="text-base text-gray-800 leading-relaxed font-light mb-4">
                 Contributing to next-generation digital infrastructure for clean energy systems, supporting the transition toward decentralised, data-driven, and optimised energy ecosystems.
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
                 <div className="p-6 bg-white rounded-sm border border-gray-200">
-                  <p className="text-xs text-gray-500 mb-2">Focus Area</p>
+                  <p className="text-xs text-gray-600 mb-2">Focus Area</p>
                   <p className="text-sm font-medium text-gray-900">Scalability</p>
                 </div>
                 <div className="p-6 bg-white rounded-sm border border-gray-200">
-                  <p className="text-xs text-gray-500 mb-2">Focus Area</p>
+                  <p className="text-xs text-gray-600 mb-2">Focus Area</p>
                   <p className="text-sm font-medium text-gray-900">Integration</p>
                 </div>
                 <div className="p-6 bg-white rounded-sm border border-gray-200">
-                  <p className="text-xs text-gray-500 mb-2">Focus Area</p>
+                  <p className="text-xs text-gray-600 mb-2">Focus Area</p>
                   <p className="text-sm font-medium text-gray-900">Optimization</p>
                 </div>
                 <div className="p-6 bg-white rounded-sm border border-gray-200">
-                  <p className="text-xs text-gray-500 mb-2">Target</p>
+                  <p className="text-xs text-gray-600 mb-2">Target</p>
                   <p className="text-sm font-medium text-gray-900">Launch 2027</p>
                 </div>
               </div>

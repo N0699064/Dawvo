@@ -3,6 +3,7 @@ import { Button } from '../components/ui/button';
 
 const Programme = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [revealed, setRevealed] = useState(new Set());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,9 +14,21 @@ const Programme = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const getVisibility = (delay = 0) => {
+  const getVisibility = (delay = 0, index = 0) => {
     const threshold = 150 + delay;
     const progress = Math.min(Math.max((scrollY - threshold) / 300, 0), 1);
+    
+    if (progress >= 1 && !revealed.has(index)) {
+      setRevealed(new Set([...revealed, index]));
+    }
+    
+    if (revealed.has(index)) {
+      return {
+        opacity: 1,
+        transform: 'translateY(0px)'
+      };
+    }
+    
     return {
       opacity: progress,
       transform: `translateY(${(1 - progress) * 60}px)`
@@ -30,26 +43,26 @@ const Programme = () => {
           <div className="px-8">
             <div className="max-w-3xl">
               <p 
-                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
-                style={getVisibility(0)}
+                className="text-xs text-gray-500 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
+                style={getVisibility(0, 0)}
               >
                 Programme
               </p>
               <h1 
                 className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-600"
-                style={getVisibility(150)}
+                style={getVisibility(150, 1)}
               >
                 Our Programmes
               </h1>
               <p 
-                className="text-base text-gray-600 leading-relaxed mb-10 font-light transition-all duration-600"
-                style={getVisibility(300)}
+                className="text-base text-gray-800 leading-relaxed mb-10 font-light transition-all duration-600"
+                style={getVisibility(300, 2)}
               >
                 Comprehensive solutions for distributed energy optimization and clean infrastructure deployment.
               </p>
               <div
                 className="transition-all duration-600"
-                style={getVisibility(450)}
+                style={getVisibility(450, 3)}
               >
                 <Button className="bg-gray-900 hover:bg-gray-800 text-white px-10 py-6 rounded-sm text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md">
                   Learn More About Our Programmes

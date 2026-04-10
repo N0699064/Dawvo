@@ -32,7 +32,7 @@ const Home = () => {
           <div className="px-8">
             <div className="max-w-3xl">
               <p 
-                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
+                className="text-xs text-gray-500 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
                 style={getVisibility(0)}
               >
                 Climate AI Optimisation Infrastructure
@@ -44,7 +44,7 @@ const Home = () => {
                 AI-driven optimisation for distributed energy performance, resilience, and scalable clean infrastructure.
               </h1>
               <p 
-                className="text-base text-gray-600 mb-10 leading-relaxed font-light transition-all duration-600"
+                className="text-base text-gray-800 mb-10 leading-relaxed font-light transition-all duration-600"
                 style={getVisibility(300)}
               >
                 DAVVO Energy builds infrastructure-grade climate AI systems that optimise distributed energy assets, enhance grid resilience, and accelerate clean energy integration.

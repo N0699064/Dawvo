@@ -3,6 +3,7 @@ import { Card, CardContent } from '../components/ui/card';
 
 const About = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [revealed, setRevealed] = useState(new Set());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,9 +14,21 @@ const About = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const getVisibility = (delay = 0) => {
+  const getVisibility = (delay = 0, index = 0) => {
     const threshold = 150 + delay;
     const progress = Math.min(Math.max((scrollY - threshold) / 300, 0), 1);
+    
+    if (progress >= 1 && !revealed.has(index)) {
+      setRevealed(new Set([...revealed, index]));
+    }
+    
+    if (revealed.has(index)) {
+      return {
+        opacity: 1,
+        transform: 'translateY(0px)'
+      };
+    }
+    
     return {
       opacity: progress,
       transform: `translateY(${(1 - progress) * 60}px)`
@@ -49,26 +62,26 @@ const About = () => {
           <div className="px-8">
             <div className="max-w-3xl">
               <p 
-                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
-                style={getVisibility(0)}
+                className="text-xs text-gray-500 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
+                style={getVisibility(0, 0)}
               >
                 About DAVVO Energy
               </p>
               <h1 
                 className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-600"
-                style={getVisibility(150)}
+                style={getVisibility(150, 1)}
               >
                 Pioneering the future of clean energy
               </h1>
               <p 
-                className="text-base text-gray-600 leading-relaxed mb-6 font-light transition-all duration-600"
-                style={getVisibility(300)}
+                className="text-base text-gray-800 leading-relaxed mb-6 font-light transition-all duration-600"
+                style={getVisibility(300, 2)}
               >
                 DAVVO Energy is at the forefront of AI-driven energy optimization, helping organizations worldwide transform their distributed energy resources into intelligent, resilient, and sustainable infrastructure.
               </p>
               <p 
-                className="text-base text-gray-600 leading-relaxed font-light transition-all duration-600"
-                style={getVisibility(400)}
+                className="text-base text-gray-800 leading-relaxed font-light transition-all duration-600"
+                style={getVisibility(400, 3)}
               >
                 Founded on the principle that clean energy should be accessible, efficient, and scalable, we combine cutting-edge artificial intelligence with deep energy sector expertise to deliver solutions that make a real difference.
               </p>
@@ -81,7 +94,7 @@ const About = () => {
         <div className="max-w-[1200px] mx-auto">
           <h2 
             className="text-2xl font-light text-gray-900 mb-12 text-center transition-all duration-600"
-            style={getVisibility(600)}
+            style={getVisibility(600, 4)}
           >
             Our Values
           </h2>
@@ -90,12 +103,12 @@ const About = () => {
               <div
                 key={index}
                 className="transition-all duration-600"
-                style={getVisibility(800 + index * 100)}
+                style={getVisibility(800 + index * 100, 5 + index)}
               >
                 <Card className="border-none shadow-none bg-white hover:shadow-md transition-all duration-300 h-full">
                   <CardContent className="p-8">
                     <h3 className="text-xl font-medium text-gray-900 mb-3">{value.title}</h3>
-                    <p className="text-sm text-gray-600 font-light">{value.description}</p>
+                    <p className="text-sm text-gray-700 font-light">{value.description}</p>
                   </CardContent>
                 </Card>
               </div>
