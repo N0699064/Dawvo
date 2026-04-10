@@ -45,29 +45,29 @@ const About = () => {
     <div className="min-h-screen bg-white">
       <section className="pt-20 pb-20 px-8">
         <div className="h-8"></div>
-        <div className="max-w-[1600px] mx-auto">
-          <div className="px-16 py-20">
-            <div className="max-w-2xl">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="px-8">
+            <div className="max-w-3xl">
               <p 
-                className="text-xs text-gray-400 tracking-[0.2em] mb-8 uppercase font-light transition-all duration-1000"
+                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-1000"
                 style={getVisibility(0)}
               >
                 About DAVVO Energy
               </p>
               <h1 
-                className="text-6xl md:text-7xl font-extralight text-gray-900 leading-[1.1] mb-10 transition-all duration-1000"
+                className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-1000"
                 style={getVisibility(150)}
               >
                 Pioneering the future of clean energy
               </h1>
               <p 
-                className="text-lg text-gray-600 leading-relaxed mb-6 font-light transition-all duration-1000"
+                className="text-base text-gray-600 leading-relaxed mb-6 font-light transition-all duration-1000"
                 style={getVisibility(300)}
               >
                 DAVVO Energy is at the forefront of AI-driven energy optimization, helping organizations worldwide transform their distributed energy resources into intelligent, resilient, and sustainable infrastructure.
               </p>
               <p 
-                className="text-lg text-gray-600 leading-relaxed font-light transition-all duration-1000"
+                className="text-base text-gray-600 leading-relaxed font-light transition-all duration-1000"
                 style={getVisibility(400)}
               >
                 Founded on the principle that clean energy should be accessible, efficient, and scalable, we combine cutting-edge artificial intelligence with deep energy sector expertise to deliver solutions that make a real difference.
@@ -78,14 +78,14 @@ const About = () => {
       </section>
 
       <section className="py-20 px-8 bg-gray-50">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-[1200px] mx-auto">
           <h2 
-            className="text-4xl font-light text-gray-900 mb-12 text-center transition-all duration-1000"
+            className="text-2xl font-light text-gray-900 mb-12 text-center transition-all duration-1000"
             style={getVisibility(600)}
           >
             Our Values
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-8">
             {values.map((value, index) => (
               <div
                 key={index}
@@ -94,8 +94,8 @@ const About = () => {
               >
                 <Card className="border-none shadow-none bg-white hover:shadow-md transition-all duration-300 h-full">
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-medium text-gray-900 mb-3">{value.title}</h3>
-                    <p className="text-gray-600">{value.description}</p>
+                    <h3 className="text-xl font-medium text-gray-900 mb-3">{value.title}</h3>
+                    <p className="text-sm text-gray-600 font-light">{value.description}</p>
                   </CardContent>
                 </Card>
               </div>

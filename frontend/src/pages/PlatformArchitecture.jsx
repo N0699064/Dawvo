@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Database, Network, Cpu, Cloud, Lock, RefreshCw } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Separator } from '../components/ui/separator';
 
 const PlatformArchitecture = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -24,320 +22,250 @@ const PlatformArchitecture = () => {
     };
   };
 
-  const architectureComponents = [
-    {
-      icon: Cloud,
-      title: 'Cloud Infrastructure',
-      description: 'Scalable cloud-native architecture built on enterprise-grade infrastructure',
-      details: [
-        'Multi-region deployment for high availability',
-        'Auto-scaling based on demand',
-        '99.99% uptime SLA',
-        'Disaster recovery and backup systems'
-      ]
-    },
-    {
-      icon: Cpu,
-      title: 'AI Processing Engine',
-      description: 'Advanced machine learning models for real-time energy optimization',
-      details: [
-        'Deep learning algorithms for pattern recognition',
-        'Predictive analytics for demand forecasting',
-        'Real-time optimization algorithms',
-        'Continuous model improvement'
-      ]
-    },
-    {
-      icon: Database,
-      title: 'Data Management',
-      description: 'Robust data storage and processing for distributed energy resources',
-      details: [
-        'Time-series database for energy metrics',
-        'Real-time data streaming and processing',
-        'Historical data analytics',
-        'Data validation and quality assurance'
-      ]
-    },
-    {
-      icon: Network,
-      title: 'Integration Layer',
-      description: 'Seamless connectivity with existing energy management systems',
-      details: [
-        'RESTful API for third-party integrations',
-        'Support for industry-standard protocols',
-        'IoT device connectivity',
-        'Legacy system compatibility'
-      ]
-    },
-    {
-      icon: Lock,
-      title: 'Security Framework',
-      description: 'Enterprise-grade security protecting your energy data',
-      details: [
-        'End-to-end encryption',
-        'Role-based access control',
-        'Compliance with industry standards',
-        'Regular security audits'
-      ]
-    },
-    {
-      icon: RefreshCw,
-      title: 'Monitoring & Analytics',
-      description: 'Comprehensive monitoring and reporting capabilities',
-      details: [
-        'Real-time performance dashboards',
-        'Custom reporting and analytics',
-        'Alert and notification systems',
-        'Performance benchmarking'
-      ]
-    }
-  ];
-
   const layers = [
     {
-      name: 'Presentation Layer',
-      description: 'User-friendly dashboards and interfaces for monitoring and control',
-      technologies: ['React', 'WebSocket', 'D3.js', 'Responsive Design']
+      number: '1',
+      title: 'Clean Energy Marketplace Layer',
+      description: 'The marketplace layer provides access to distributed renewable energy technologies and services.',
+      content: 'This layer enables users to discover, compare, and access solutions such as:',
+      points: [
+        'Solar energy systems',
+        'Battery storage technologies',
+        'Electric vehicle charging infrastructure',
+        'Clean energy services and solutions'
+      ],
+      footer: 'The marketplace supports the adoption of renewable energy technologies while connecting users, suppliers, and innovators within a unified platform.'
     },
     {
-      name: 'Application Layer',
-      description: 'Business logic and orchestration for energy optimization',
-      technologies: ['FastAPI', 'Microservices', 'Event-Driven Architecture', 'API Gateway']
+      number: '2',
+      title: 'Monitoring & Analytics Layer',
+      description: 'The monitoring and analytics layer enables real-time visibility into energy systems.',
+      content: 'This layer focuses on:',
+      points: [
+        'Monitoring energy generation and consumption',
+        'Tracking system performance and efficiency',
+        'Analysing energy usage patterns',
+        'Providing insights into carbon impact and sustainability metrics'
+      ],
+      footer: 'By enabling real-time data visibility, this layer allows users and system operators to better understand and manage distributed energy systems.'
     },
     {
-      name: 'Intelligence Layer',
-      description: 'AI/ML models for prediction, optimization, and decision-making',
-      technologies: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'MLflow']
+      number: '3',
+      title: 'Climate AI Optimisation Layer',
+      description: 'The Climate AI layer represents the intelligence engine of the Davwo platform.',
+      content: 'This layer is designed to:',
+      points: [
+        'Analyse real-time and historical energy data',
+        'Optimise energy consumption and system performance',
+        'Provide predictive insights for energy demand and supply',
+        'Support cost efficiency and energy optimisation'
+      ],
+      footer: 'Through artificial intelligence, this layer enhances the performance and coordination of distributed energy systems.'
     },
     {
-      name: 'Data Layer',
-      description: 'Distributed data storage and real-time processing',
-      technologies: ['MongoDB', 'Redis', 'Apache Kafka', 'TimescaleDB']
-    },
-    {
-      name: 'Infrastructure Layer',
-      description: 'Cloud infrastructure and DevOps automation',
-      technologies: ['Kubernetes', 'Docker', 'Terraform', 'CI/CD Pipelines']
+      number: '4',
+      title: 'Distributed Energy Coordination Layer',
+      description: 'This layer integrates multiple energy technologies into a coordinated digital infrastructure.',
+      content: 'It focuses on:',
+      points: [
+        'Coordinating solar, battery storage, and EV charging systems',
+        'Managing distributed energy resources across multiple locations',
+        'Supporting intelligent energy flow and system interaction',
+        'Enabling scalable integration of renewable energy systems'
+      ],
+      footer: 'This layer forms the foundation for a more connected and resilient energy ecosystem.'
     }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-20 pb-20 px-8">
+      <section className="pt-20 pb-16 px-8">
         <div className="h-8"></div>
-        <div className="max-w-[1600px] mx-auto">
-          <div className="px-16 py-20">
-            <div className="max-w-2xl">
-              <p 
-                className="text-xs text-gray-400 tracking-[0.2em] mb-8 uppercase font-light transition-all duration-1000"
-                style={getVisibility(0)}
-              >
-                Platform Architecture
+        <div className="max-w-[1200px] mx-auto">
+          <div className="px-8">
+            <p 
+              className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-1000"
+              style={getVisibility(0)}
+            >
+              Platform Architecture
+            </p>
+            <h1 
+              className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-1000"
+              style={getVisibility(150)}
+            >
+              Davwo Energy Platform Architecture
+            </h1>
+            <p 
+              className="text-base text-gray-600 leading-relaxed font-light mb-6 transition-all duration-1000"
+              style={getVisibility(300)}
+            >
+              Davwo Energy is developing a Climate AI Optimisation Infrastructure platform designed to improve how distributed renewable energy systems are monitored, coordinated, and optimised.
+            </p>
+            <p 
+              className="text-base text-gray-600 leading-relaxed font-light transition-all duration-1000"
+              style={getVisibility(350)}
+            >
+              As energy systems become increasingly decentralised, the need for intelligent digital infrastructure capable of integrating multiple technologies is critical. The Davwo platform is structured as a multi-layered system that connects clean energy technologies, data analytics, and artificial intelligence into a unified infrastructure.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Architecture Layers */}
+      <section className="py-16 px-8">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="px-8">
+            <Separator className="mb-12" />
+            <h2 
+              className="text-2xl font-light text-gray-900 mb-16 transition-all duration-1000"
+              style={getVisibility(500)}
+            >
+              Core Architecture Layers
+            </h2>
+
+            <div className="space-y-20">
+              {layers.map((layer, index) => (
+                <div 
+                  key={index}
+                  className="transition-all duration-1000"
+                  style={getVisibility(600 + index * 200)}
+                >
+                  <div className="flex gap-6 mb-4">
+                    <span className="text-4xl font-extralight text-gray-300">{layer.number}</span>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-normal text-gray-900 mb-3">
+                        {layer.title}
+                      </h3>
+                      <p className="text-base text-gray-600 leading-relaxed font-light mb-4">
+                        {layer.description}
+                      </p>
+                      <p className="text-sm text-gray-600 leading-relaxed font-light mb-3">
+                        {layer.content}
+                      </p>
+                      <ul className="space-y-2 mb-4">
+                        {layer.points.map((point, idx) => (
+                          <li key={idx} className="text-sm text-gray-600 font-light flex items-start">
+                            <span className="text-gray-400 mr-3">•</span>
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="text-sm text-gray-600 leading-relaxed font-light">
+                        {layer.footer}
+                      </p>
+                    </div>
+                  </div>
+                  {index < layers.length - 1 && <Separator className="mt-12" />}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Integration */}
+      <section className="py-16 px-8 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="px-8">
+            <div 
+              className="transition-all duration-1000"
+              style={getVisibility(1800)}
+            >
+              <Separator className="mb-12 bg-gray-300" />
+              <h2 className="text-2xl font-light text-gray-900 mb-6">
+                Platform Integration
+              </h2>
+              <p className="text-base text-gray-600 leading-relaxed font-light mb-4">
+                The Davwo Energy platform integrates these layers into a unified system where:
               </p>
-              <h1 
-                className="text-6xl md:text-7xl font-extralight text-gray-900 leading-[1.1] mb-8 transition-all duration-1000"
-                style={getVisibility(150)}
-              >
-                Built for scale, designed for resilience
-              </h1>
-              <p 
-                className="text-lg text-gray-600 leading-relaxed font-light transition-all duration-1000"
-                style={getVisibility(300)}
-              >
-                Our platform architecture combines cutting-edge technology with proven infrastructure patterns to deliver a robust, scalable solution for distributed energy optimization.
+              <ul className="space-y-2 mb-6">
+                <li className="text-sm text-gray-600 font-light flex items-start">
+                  <span className="text-gray-400 mr-3">•</span>
+                  Users can access clean energy technologies
+                </li>
+                <li className="text-sm text-gray-600 font-light flex items-start">
+                  <span className="text-gray-400 mr-3">•</span>
+                  Energy systems are monitored in real time
+                </li>
+                <li className="text-sm text-gray-600 font-light flex items-start">
+                  <span className="text-gray-400 mr-3">•</span>
+                  Artificial intelligence optimises system performance
+                </li>
+                <li className="text-sm text-gray-600 font-light flex items-start">
+                  <span className="text-gray-400 mr-3">•</span>
+                  Distributed energy resources are intelligently coordinated
+                </li>
+              </ul>
+              <p className="text-sm text-gray-600 leading-relaxed font-light">
+                This integrated approach enables more efficient, scalable, and intelligent renewable energy systems.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Architecture Overview */}
-      <section className="py-20 px-8">
-        <div className="max-w-[1400px] mx-auto">
-          <div 
-            className="text-center mb-16 transition-all duration-1000"
-            style={getVisibility(600)}
-          >
-            <h2 className="text-4xl font-light text-gray-900 mb-4">
-              Core Components
-            </h2>
-            <p className="text-lg text-gray-600">
-              Six pillars supporting intelligent energy optimization
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {architectureComponents.map((component, index) => {
-              const Icon = component.icon;
-              return (
-                <div
-                  key={index}
-                  className="transition-all duration-1000"
-                  style={getVisibility(800 + index * 100)}
-                >
-                  <Card className="border border-gray-200 hover:shadow-lg transition-all duration-300 group h-full">
-                    <CardHeader>
-                      <div className="mb-4 inline-flex p-3 bg-gray-50 rounded-lg group-hover:bg-gray-900 transition-colors duration-300">
-                        <Icon className="h-7 w-7 text-gray-900 group-hover:text-white transition-colors duration-300" />
-                      </div>
-                      <CardTitle className="text-xl font-medium">{component.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600 mb-4">{component.description}</p>
-                      <ul className="space-y-2">
-                        {component.details.map((detail, idx) => (
-                          <li key={idx} className="text-sm text-gray-500 flex items-start">
-                            <span className="text-gray-900 mr-2">•</span>
-                            {detail}
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              );
-            })}
+      {/* Technology Vision */}
+      <section className="py-16 px-8">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="px-8">
+            <div 
+              className="transition-all duration-1000"
+              style={getVisibility(2000)}
+            >
+              <Separator className="mb-12" />
+              <h2 className="text-2xl font-light text-gray-900 mb-6">
+                Technology Vision
+              </h2>
+              <p className="text-base text-gray-600 leading-relaxed font-light mb-6">
+                Davwo Energy aims to contribute to the development of next-generation digital infrastructure for clean energy systems, supporting the transition toward decentralised, data-driven, and optimised energy ecosystems.
+              </p>
+              <p className="text-sm text-gray-600 leading-relaxed font-light mb-4">
+                The platform is being developed with a focus on:
+              </p>
+              <ul className="space-y-2">
+                <li className="text-sm text-gray-600 font-light flex items-start">
+                  <span className="text-gray-400 mr-3">•</span>
+                  Scalability across different energy markets
+                </li>
+                <li className="text-sm text-gray-600 font-light flex items-start">
+                  <span className="text-gray-400 mr-3">•</span>
+                  Integration with emerging renewable technologies
+                </li>
+                <li className="text-sm text-gray-600 font-light flex items-start">
+                  <span className="text-gray-400 mr-3">•</span>
+                  Data-driven decision-making and optimisation
+                </li>
+                <li className="text-sm text-gray-600 font-light flex items-start">
+                  <span className="text-gray-400 mr-3">•</span>
+                  Supporting the global transition to sustainable energy systems
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Layered Architecture */}
-      <section className="py-20 px-8 bg-gray-50">
-        <div className="max-w-[1400px] mx-auto">
-          <div 
-            className="text-center mb-16 transition-all duration-1000"
-            style={getVisibility(1600)}
-          >
-            <h2 className="text-4xl font-light text-gray-900 mb-4">
-              Layered Architecture
-            </h2>
-            <p className="text-lg text-gray-600">
-              A modular, scalable approach to energy optimization
-            </p>
+      {/* Development Outlook */}
+      <section className="py-16 px-8 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="px-8">
+            <div 
+              className="transition-all duration-1000"
+              style={getVisibility(2200)}
+            >
+              <Separator className="mb-12 bg-gray-300" />
+              <h2 className="text-2xl font-light text-gray-900 mb-6">
+                Development Outlook
+              </h2>
+              <p className="text-base text-gray-600 leading-relaxed font-light mb-4">
+                The Davwo Energy platform is currently in the early development phase, with a structured roadmap guiding its evolution toward deployment.
+              </p>
+              <p className="text-sm text-gray-600 leading-relaxed font-light">
+                The initial platform launch is targeted for 2027, with a focus on the United Kingdom and European markets, followed by broader expansion.
+              </p>
+            </div>
           </div>
-
-          <div className="space-y-4">
-            {layers.map((layer, index) => (
-              <div
-                key={index}
-                className="transition-all duration-1000"
-                style={getVisibility(1800 + index * 100)}
-              >
-                <Card className="border-l-4 border-l-gray-900 hover:shadow-md transition-all duration-300">
-                  <CardContent className="p-8">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                      <div className="mb-4 md:mb-0 md:flex-1">
-                        <h3 className="text-2xl font-medium text-gray-900 mb-2">
-                          {layer.name}
-                        </h3>
-                        <p className="text-gray-600">
-                          {layer.description}
-                        </p>
-                      </div>
-                      <div className="md:flex-1 md:ml-8">
-                        <div className="flex flex-wrap gap-2">
-                          {layer.technologies.map((tech, idx) => (
-                            <span 
-                              key={idx}
-                              className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-700"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Key Features */}
-      <section className="py-20 px-8">
-        <div 
-          className="max-w-[1400px] mx-auto transition-all duration-1000"
-          style={getVisibility(2400)}
-        >
-          <Tabs defaultValue="scalability" className="w-full">
-            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-12">
-              <TabsTrigger value="scalability">Scalability</TabsTrigger>
-              <TabsTrigger value="reliability">Reliability</TabsTrigger>
-              <TabsTrigger value="performance">Performance</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="scalability" className="mt-0">
-              <div className="max-w-3xl mx-auto">
-                <h3 className="text-3xl font-light text-gray-900 mb-6">Designed to Scale</h3>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  Our architecture scales horizontally to handle increasing loads, from single installations to nationwide deployments. Microservices architecture ensures each component can scale independently based on demand.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-gray-900 mr-3 text-xl">✓</span>
-                    <span className="text-gray-700">Auto-scaling based on real-time demand</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-gray-900 mr-3 text-xl">✓</span>
-                    <span className="text-gray-700">Load balancing across multiple regions</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-gray-900 mr-3 text-xl">✓</span>
-                    <span className="text-gray-700">Containerized deployment for rapid scaling</span>
-                  </li>
-                </ul>
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="reliability" className="mt-0">
-              <div className="max-w-3xl mx-auto">
-                <h3 className="text-3xl font-light text-gray-900 mb-6">Built for Reliability</h3>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  High availability and fault tolerance are core to our design. Redundant systems, automated failover, and continuous monitoring ensure your energy operations never stop.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-gray-900 mr-3 text-xl">✓</span>
-                    <span className="text-gray-700">99.99% uptime guarantee</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-gray-900 mr-3 text-xl">✓</span>
-                    <span className="text-gray-700">Automated backup and disaster recovery</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-gray-900 mr-3 text-xl">✓</span>
-                    <span className="text-gray-700">Real-time health monitoring and alerts</span>
-                  </li>
-                </ul>
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="performance" className="mt-0">
-              <div className="max-w-3xl mx-auto">
-                <h3 className="text-3xl font-light text-gray-900 mb-6">Optimized Performance</h3>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  Low-latency processing and efficient resource utilization ensure rapid response times for critical energy decisions. Our platform processes millions of data points per second.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-gray-900 mr-3 text-xl">✓</span>
-                    <span className="text-gray-700">Sub-second response times for critical operations</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-gray-900 mr-3 text-xl">✓</span>
-                    <span className="text-gray-700">Optimized database queries and caching</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-gray-900 mr-3 text-xl">✓</span>
-                    <span className="text-gray-700">Edge computing for reduced latency</span>
-                  </li>
-                </ul>
-              </div>
-            </TabsContent>
-          </Tabs>
         </div>
       </section>
     </div>

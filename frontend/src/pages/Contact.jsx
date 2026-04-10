@@ -59,23 +59,23 @@ const Contact = () => {
     <div className="min-h-screen bg-white">
       <section className="pt-20 pb-20 px-8">
         <div className="h-8"></div>
-        <div className="max-w-[1600px] mx-auto">
-          <div className="px-16 py-20 mb-16">
-            <div className="max-w-2xl">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="px-8 mb-16">
+            <div className="max-w-3xl">
               <p 
-                className="text-xs text-gray-400 tracking-[0.2em] mb-8 uppercase font-light transition-all duration-1000"
+                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-1000"
                 style={getVisibility(0)}
               >
                 Contact Us
               </p>
               <h1 
-                className="text-6xl md:text-7xl font-extralight text-gray-900 leading-[1.1] mb-10 transition-all duration-1000"
+                className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-1000"
                 style={getVisibility(150)}
               >
                 Let's discuss your energy future
               </h1>
               <p 
-                className="text-lg text-gray-600 leading-relaxed font-light transition-all duration-1000"
+                className="text-base text-gray-600 leading-relaxed font-light transition-all duration-1000"
                 style={getVisibility(300)}
               >
                 Get in touch with our team to learn how DAVVO Energy can transform your distributed energy infrastructure.
@@ -84,7 +84,7 @@ const Contact = () => {
           </div>
 
           <div 
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 transition-all duration-1000"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 px-8 transition-all duration-1000"
             style={getVisibility(500)}
           >
             <Card className="border border-gray-200">
@@ -93,7 +93,7 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-gray-900" />
                 </div>
                 <h3 className="font-medium text-gray-900 mb-2">Email</h3>
-                <p className="text-gray-600">info@davvoenergy.com</p>
+                <p className="text-sm text-gray-600 font-light">info@davvoenergy.com</p>
               </CardContent>
             </Card>
 
@@ -103,7 +103,7 @@ const Contact = () => {
                   <Phone className="h-6 w-6 text-gray-900" />
                 </div>
                 <h3 className="font-medium text-gray-900 mb-2">Phone</h3>
-                <p className="text-gray-600">+1 (555) 123-4567</p>
+                <p className="text-sm text-gray-600 font-light">+1 (555) 123-4567</p>
               </CardContent>
             </Card>
 
@@ -113,18 +113,18 @@ const Contact = () => {
                   <MapPin className="h-6 w-6 text-gray-900" />
                 </div>
                 <h3 className="font-medium text-gray-900 mb-2">Location</h3>
-                <p className="text-gray-600">Global Operations</p>
+                <p className="text-sm text-gray-600 font-light">Global Operations</p>
               </CardContent>
             </Card>
           </div>
 
           <div 
-            className="max-w-2xl mx-auto transition-all duration-1000"
+            className="max-w-2xl mx-auto px-8 transition-all duration-1000"
             style={getVisibility(700)}
           >
             <Card className="border border-gray-200">
               <CardContent className="p-10">
-                <h2 className="text-3xl font-light text-gray-900 mb-8">Send us a message</h2>
+                <h2 className="text-2xl font-light text-gray-900 mb-8">Send us a message</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -190,7 +190,7 @@ const Contact = () => {
 
                   <Button 
                     type="submit"
-                    className="w-full bg-gray-900 hover:bg-gray-800 text-white py-7 rounded-sm text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md"
+                    className="w-full bg-gray-900 hover:bg-gray-800 text-white py-6 rounded-sm text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md"
                   >
                     Send Message
                   </Button>
