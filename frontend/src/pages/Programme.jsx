@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Card, CardContent } from '../components/ui/card';
+import { Cloud, Database, Zap, Network } from 'lucide-react';
 
 const Programme = () => {
   const [scrollY, setScrollY] = useState(0);
   const [revealed, setRevealed] = useState(new Set());
+  const [activeCard, setActiveCard] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,23 +79,31 @@ const Programme = () => {
   const layers = [
     {
       number: '01',
+      icon: Cloud,
       title: 'Clean Energy Marketplace Layer',
       description: 'Access to distributed renewable energy technologies and services. Connect with solar systems, battery storage, EV charging infrastructure, and clean energy solutions.',
+      color: 'from-blue-50 to-cyan-50'
     },
     {
       number: '02',
+      icon: Database,
       title: 'Monitoring & Analytics Layer',
       description: 'Real-time visibility into energy systems. Track generation, consumption, performance, efficiency, and sustainability metrics across your infrastructure.',
+      color: 'from-green-50 to-emerald-50'
     },
     {
       number: '03',
+      icon: Zap,
       title: 'Climate AI Optimisation Layer',
       description: 'Intelligence engine analyzing real-time and historical data. Optimizes consumption, provides predictive insights, and supports cost efficiency.',
+      color: 'from-purple-50 to-violet-50'
     },
     {
       number: '04',
+      icon: Network,
       title: 'Distributed Energy Coordination Layer',
       description: 'Coordinates solar, battery storage, and EV charging systems. Manages distributed resources and enables intelligent energy flow across locations.',
+      color: 'from-orange-50 to-amber-50'
     }
   ];
 
@@ -131,8 +142,8 @@ const Programme = () => {
           <div className="carousel-track animate-scroll-right">
             {[...technologies, ...technologies].map((tech, index) => (
               <div key={index} className="carousel-item">
-                <div className="px-8 py-4 bg-gray-50 rounded-full border border-gray-200 whitespace-nowrap">
-                  <span className="text-sm font-light text-gray-800">{tech}</span>
+                <div className="px-8 py-4 bg-gray-50 rounded-full border border-gray-200 whitespace-nowrap hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all cursor-pointer">
+                  <span className="text-sm font-light">{tech}</span>
                 </div>
               </div>
             ))}
@@ -140,48 +151,69 @@ const Programme = () => {
         </div>
       </section>
 
-      {/* 3D Circular Carousel - Smaller Cards, All Visible */}
-      <section className="py-24 px-8">
+      {/* Interactive Layer Cards */}
+      <section className="py-20 px-8">
         <div className="max-w-[1200px] mx-auto">
           <div className="px-8">
             <h2 
-              className="text-2xl font-light text-gray-900 mb-16 text-center transition-all duration-600"
+              className="text-2xl font-light text-gray-900 mb-12 text-center transition-all duration-600"
               style={getVisibility(500, 3)}
             >
               Core Architecture Layers
             </h2>
 
-            <div 
-              className="carousel-3d-container"
-              style={getVisibility(600, 4)}
-            >
-              <div className="carousel-3d">
-                {layers.map((layer, index) => (
-                  <div 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {layers.map((layer, index) => {
+                const Icon = layer.icon;
+                return (
+                  <Card
                     key={index}
-                    className="carousel-3d-item"
-                    style={{
-                      transform: `rotateY(${index * 90}deg) translateZ(350px)`
-                    }}
+                    className={`border-2 transition-all duration-500 cursor-pointer overflow-hidden ${
+                      activeCard === index 
+                        ? 'border-gray-900 shadow-2xl scale-105' 
+                        : 'border-gray-200 hover:border-gray-400 hover:shadow-lg'
+                    }`}
+                    style={getVisibility(600 + index * 100, 4 + index)}
+                    onMouseEnter={() => setActiveCard(index)}
+                    onMouseLeave={() => setActiveCard(null)}
                   >
-                    <div className="layer-card">
-                      <div className="flex flex-col gap-4">
-                        <span className="text-4xl font-extralight text-gray-200">
-                          {layer.number}
-                        </span>
-                        <div>
-                          <h3 className="text-base font-medium text-gray-900 mb-2">
-                            {layer.title}
-                          </h3>
-                          <p className="text-xs text-gray-700 leading-relaxed font-light">
-                            {layer.description}
-                          </p>
+                    <CardContent className="p-0">
+                      {/* Icon Header */}
+                      <div className={`p-8 bg-gradient-to-br ${layer.color} transition-all duration-500`}>
+                        <div className="flex items-start justify-between">
+                          <div className={`p-4 bg-white rounded-lg shadow-sm transition-all duration-500 ${
+                            activeCard === index ? 'scale-110' : ''
+                          }`}>
+                            <Icon className="h-8 w-8 text-gray-900" />
+                          </div>
+                          <span className="text-5xl font-extralight text-gray-300">
+                            {layer.number}
+                          </span>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                      
+                      {/* Content */}
+                      <div className="p-8">
+                        <h3 className="text-lg font-medium text-gray-900 mb-3">
+                          {layer.title}
+                        </h3>
+                        <p className="text-sm text-gray-700 leading-relaxed font-light">
+                          {layer.description}
+                        </p>
+                        
+                        {/* Progress bar on hover */}
+                        <div className="mt-6 h-1 bg-gray-100 rounded overflow-hidden">
+                          <div 
+                            className={`h-full bg-gray-900 transition-all duration-700 ${
+                              activeCard === index ? 'w-full' : 'w-0'
+                            }`}
+                          ></div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -193,8 +225,8 @@ const Programme = () => {
           <div className="carousel-track animate-scroll-left">
             {[...benefits, ...benefits].map((benefit, index) => (
               <div key={index} className="carousel-item">
-                <div className="px-8 py-4 bg-white rounded-full border border-gray-200 whitespace-nowrap">
-                  <span className="text-sm font-medium text-gray-900">{benefit}</span>
+                <div className="px-8 py-4 bg-white rounded-full border border-gray-200 whitespace-nowrap hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all cursor-pointer">
+                  <span className="text-sm font-medium">{benefit}</span>
                 </div>
               </div>
             ))}
@@ -202,20 +234,33 @@ const Programme = () => {
         </div>
       </section>
 
-      {/* Platform Integration */}
-      <section className="py-16 px-8">
+      {/* Programme Focus */}
+      <section className="py-20 px-8">
         <div className="max-w-[1200px] mx-auto">
           <div className="px-8">
             <div 
               className="transition-all duration-600"
               style={getVisibility(1200, 8)}
             >
-              <h2 className="text-2xl font-light text-gray-900 mb-6">
-                Programme Integration
+              <h2 className="text-2xl font-light text-gray-900 mb-6 text-center">
+                Programme Focus
               </h2>
-              <p className="text-base text-gray-800 leading-relaxed font-light mb-8">
-                Our programmes integrate cutting-edge technologies across all platform layers to deliver comprehensive energy solutions.
+              <p className="text-base text-gray-800 leading-relaxed font-light mb-12 text-center max-w-3xl mx-auto">
+                Our programmes are designed to accelerate the adoption and optimization of distributed clean energy systems worldwide.
               </p>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {['Innovation', 'Deployment', 'Coordination', 'Scalable'].map((item, idx) => (
+                  <Card key={idx} className="border-none bg-gray-50 hover:bg-gray-900 group transition-all duration-300 cursor-pointer">
+                    <CardContent className="p-8 text-center">
+                      <p className="text-2xl font-extralight text-gray-900 group-hover:text-white transition-colors mb-2">
+                        {String(idx + 1).padStart(2, '0')}
+                      </p>
+                      <p className="text-sm font-medium text-gray-900 group-hover:text-white transition-colors">{item}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -227,48 +272,11 @@ const Programme = () => {
           <div className="carousel-track animate-scroll-right">
             {[...features, ...features].map((feature, index) => (
               <div key={index} className="carousel-item">
-                <div className="px-8 py-4 bg-gray-50 rounded-full border border-gray-200 whitespace-nowrap">
-                  <span className="text-sm font-light text-gray-800">{feature}</span>
+                <div className="px-8 py-4 bg-gray-50 rounded-full border border-gray-200 whitespace-nowrap hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all cursor-pointer">
+                  <span className="text-sm font-light">{feature}</span>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technology Focus */}
-      <section className="py-16 px-8 bg-gray-50">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="px-8">
-            <div 
-              className="transition-all duration-600"
-              style={getVisibility(1600, 9)}
-            >
-              <h2 className="text-2xl font-light text-gray-900 mb-6">
-                Programme Focus
-              </h2>
-              <p className="text-base text-gray-800 leading-relaxed font-light mb-4">
-                Our programmes are designed to accelerate the adoption and optimization of distributed clean energy systems worldwide.
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-                <div className="p-6 bg-white rounded-sm border border-gray-200">
-                  <p className="text-xs text-gray-600 mb-2">Focus Area</p>
-                  <p className="text-sm font-medium text-gray-900">Innovation</p>
-                </div>
-                <div className="p-6 bg-white rounded-sm border border-gray-200">
-                  <p className="text-xs text-gray-600 mb-2">Focus Area</p>
-                  <p className="text-sm font-medium text-gray-900">Deployment</p>
-                </div>
-                <div className="p-6 bg-white rounded-sm border border-gray-200">
-                  <p className="text-xs text-gray-600 mb-2">Focus Area</p>
-                  <p className="text-sm font-medium text-gray-900">Coordination</p>
-                </div>
-                <div className="p-6 bg-white rounded-sm border border-gray-200">
-                  <p className="text-xs text-gray-600 mb-2">Approach</p>
-                  <p className="text-sm font-medium text-gray-900">Scalable</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -309,83 +317,6 @@ const Programme = () => {
 
         .carousel-track:hover {
           animation-play-state: paused;
-        }
-
-        /* 3D Circular Carousel - Smaller, All Visible */
-        .carousel-3d-container {
-          perspective: 1500px;
-          height: 400px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto;
-        }
-
-        .carousel-3d {
-          position: relative;
-          width: 100%;
-          height: 300px;
-          transform-style: preserve-3d;
-          animation: rotate3d 30s linear infinite;
-        }
-
-        .carousel-3d:hover {
-          animation-play-state: paused;
-        }
-
-        @keyframes rotate3d {
-          0% { transform: rotateY(0deg); }
-          100% { transform: rotateY(360deg); }
-        }
-
-        .carousel-3d-item {
-          position: absolute;
-          width: 380px;
-          height: 100%;
-          left: 50%;
-          top: 50%;
-          margin-left: -190px;
-          margin-top: -150px;
-          transform-style: preserve-3d;
-        }
-
-        .layer-card {
-          width: 100%;
-          height: 100%;
-          background: white;
-          border: 1px solid #e5e7eb;
-          border-radius: 2px;
-          padding: 2rem;
-          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-          backface-visibility: hidden;
-          display: flex;
-          align-items: center;
-          transition: all 0.3s;
-        }
-
-        .layer-card:hover {
-          border-color: #111827;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        @media (max-width: 768px) {
-          .carousel-3d-container {
-            height: 350px;
-          }
-
-          .carousel-3d {
-            height: 250px;
-          }
-
-          .carousel-3d-item {
-            width: 280px;
-            margin-left: -140px;
-            margin-top: -125px;
-          }
-
-          .layer-card {
-            padding: 1.5rem;
-          }
         }
       `}</style>
     </div>
