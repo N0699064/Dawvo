@@ -15,8 +15,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white z-50">
-      <div className="border-[5px] border-black px-20 py-10 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 right-0 bg-white z-[100]">
+      <div className="border-[5px] border-black px-20 py-10 flex justify-between items-center bg-white">
         <Link to="/" className="flex items-center">
           <img 
             src="https://customer-assets.emergentagent.com/job_1045df7f-45d6-4bd9-a099-b96d9fef1478/artifacts/nv29josx_B35DD144-A99A-4EFA-8C62-789D6F70D141%20%281%29.webp" 
@@ -49,6 +49,7 @@ const Navbar = () => {
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="lg:hidden p-2 hover:bg-gray-100 rounded-md transition-colors"
+          aria-label="Toggle menu"
         >
           {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
         </button>
@@ -56,8 +57,8 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-x-[5px] border-b-[5px] border-black">
-          <div className="flex flex-col py-4">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-x-[5px] border-b-[5px] border-black z-[100]">
+          <div className="flex flex-col py-4 bg-white">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
