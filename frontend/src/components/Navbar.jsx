@@ -15,7 +15,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white z-[100]">
+    <nav className="sticky top-0 left-0 right-0 bg-white z-[100]">
       <div className="border-[5px] border-black px-20 py-10 flex justify-between items-center bg-white">
         <Link to="/" className="flex items-center">
           <img 
