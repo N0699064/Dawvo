@@ -30,25 +30,25 @@ const Programme = () => {
           <div className="px-8">
             <div className="max-w-3xl">
               <p 
-                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-1000"
+                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
                 style={getVisibility(0)}
               >
                 Programme
               </p>
               <h1 
-                className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-1000"
+                className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-600"
                 style={getVisibility(150)}
               >
                 Our Programmes
               </h1>
               <p 
-                className="text-base text-gray-600 leading-relaxed mb-10 font-light transition-all duration-1000"
+                className="text-base text-gray-600 leading-relaxed mb-10 font-light transition-all duration-600"
                 style={getVisibility(300)}
               >
                 Comprehensive solutions for distributed energy optimization and clean infrastructure deployment.
               </p>
               <div
-                className="transition-all duration-1000"
+                className="transition-all duration-600"
                 style={getVisibility(450)}
               >
                 <Button className="bg-gray-900 hover:bg-gray-800 text-white px-10 py-6 rounded-sm text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md">

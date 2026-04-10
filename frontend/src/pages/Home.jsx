@@ -32,25 +32,25 @@ const Home = () => {
           <div className="px-8">
             <div className="max-w-3xl">
               <p 
-                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-1000"
+                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
                 style={getVisibility(0)}
               >
                 Climate AI Optimisation Infrastructure
               </p>
               <h1 
-                className="text-4xl md:text-5xl font-light text-gray-900 leading-tight mb-8 transition-all duration-1000"
+                className="text-4xl md:text-5xl font-light text-gray-900 leading-tight mb-8 transition-all duration-600"
                 style={getVisibility(150)}
               >
                 AI-driven optimisation for distributed energy performance, resilience, and scalable clean infrastructure.
               </h1>
               <p 
-                className="text-base text-gray-600 mb-10 leading-relaxed font-light transition-all duration-1000"
+                className="text-base text-gray-600 mb-10 leading-relaxed font-light transition-all duration-600"
                 style={getVisibility(300)}
               >
                 DAVVO Energy builds infrastructure-grade climate AI systems that optimise distributed energy assets, enhance grid resilience, and accelerate clean energy integration.
               </p>
               <div 
-                className="flex gap-4 transition-all duration-1000"
+                className="flex gap-4 transition-all duration-600"
                 style={getVisibility(450)}
               >
                 <Button 

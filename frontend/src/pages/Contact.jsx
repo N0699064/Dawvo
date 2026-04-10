@@ -63,19 +63,19 @@ const Contact = () => {
           <div className="px-8 mb-16">
             <div className="max-w-3xl">
               <p 
-                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-1000"
+                className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
                 style={getVisibility(0)}
               >
                 Contact Us
               </p>
               <h1 
-                className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-1000"
+                className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-600"
                 style={getVisibility(150)}
               >
                 Let's discuss your energy future
               </h1>
               <p 
-                className="text-base text-gray-600 leading-relaxed font-light transition-all duration-1000"
+                className="text-base text-gray-600 leading-relaxed font-light transition-all duration-600"
                 style={getVisibility(300)}
               >
                 Get in touch with our team to learn how DAVVO Energy can transform your distributed energy infrastructure.
@@ -84,7 +84,7 @@ const Contact = () => {
           </div>
 
           <div 
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 px-8 transition-all duration-1000"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 px-8 transition-all duration-600"
             style={getVisibility(500)}
           >
             <Card className="border border-gray-200">
@@ -119,7 +119,7 @@ const Contact = () => {
           </div>
 
           <div 
-            className="max-w-2xl mx-auto px-8 transition-all duration-1000"
+            className="max-w-2xl mx-auto px-8 transition-all duration-600"
             style={getVisibility(700)}
           >
             <Card className="border border-gray-200">

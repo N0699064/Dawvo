@@ -85,25 +85,25 @@ const PlatformArchitecture = () => {
         <div className="max-w-[1200px] mx-auto">
           <div className="px-8">
             <p 
-              className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-1000"
+              className="text-xs text-gray-400 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
               style={getVisibility(0)}
             >
               Platform Architecture
             </p>
             <h1 
-              className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-1000"
+              className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-600"
               style={getVisibility(150)}
             >
               Davwo Energy Platform Architecture
             </h1>
             <p 
-              className="text-base text-gray-600 leading-relaxed font-light mb-6 transition-all duration-1000"
+              className="text-base text-gray-600 leading-relaxed font-light mb-6 transition-all duration-600"
               style={getVisibility(300)}
             >
               Davwo Energy is developing a Climate AI Optimisation Infrastructure platform designed to improve how distributed renewable energy systems are monitored, coordinated, and optimised.
             </p>
             <p 
-              className="text-base text-gray-600 leading-relaxed font-light transition-all duration-1000"
+              className="text-base text-gray-600 leading-relaxed font-light transition-all duration-600"
               style={getVisibility(350)}
             >
               As energy systems become increasingly decentralised, the need for intelligent digital infrastructure capable of integrating multiple technologies is critical. The Davwo platform is structured as a multi-layered system that connects clean energy technologies, data analytics, and artificial intelligence into a unified infrastructure.
@@ -118,7 +118,7 @@ const PlatformArchitecture = () => {
           <div className="px-8">
             <Separator className="mb-12" />
             <h2 
-              className="text-2xl font-light text-gray-900 mb-16 transition-all duration-1000"
+              className="text-2xl font-light text-gray-900 mb-16 transition-all duration-600"
               style={getVisibility(500)}
             >
               Core Architecture Layers
@@ -128,7 +128,7 @@ const PlatformArchitecture = () => {
               {layers.map((layer, index) => (
                 <div 
                   key={index}
-                  className="transition-all duration-1000"
+                  className="transition-all duration-600"
                   style={getVisibility(600 + index * 200)}
                 >
                   <div className="flex gap-6 mb-4">
@@ -169,7 +169,7 @@ const PlatformArchitecture = () => {
         <div className="max-w-[1200px] mx-auto">
           <div className="px-8">
             <div 
-              className="transition-all duration-1000"
+              className="transition-all duration-600"
               style={getVisibility(1800)}
             >
               <Separator className="mb-12 bg-gray-300" />
@@ -210,7 +210,7 @@ const PlatformArchitecture = () => {
         <div className="max-w-[1200px] mx-auto">
           <div className="px-8">
             <div 
-              className="transition-all duration-1000"
+              className="transition-all duration-600"
               style={getVisibility(2000)}
             >
               <Separator className="mb-12" />
@@ -251,7 +251,7 @@ const PlatformArchitecture = () => {
         <div className="max-w-[1200px] mx-auto">
           <div className="px-8">
             <div 
-              className="transition-all duration-1000"
+              className="transition-all duration-600"
               style={getVisibility(2200)}
             >
               <Separator className="mb-12 bg-gray-300" />
