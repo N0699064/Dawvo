@@ -15,7 +15,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 left-0 right-0 bg-white z-[100]">
+    <nav className="relative bg-white z-50">
       <div className="border-[5px] border-black px-20 py-10 flex justify-between items-center bg-white">
         <Link to="/" className="flex items-center">
           <img 
@@ -57,7 +57,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-x-[5px] border-b-[5px] border-black z-[100]">
+        <div className="lg:hidden bg-white border-x-[5px] border-b-[5px] border-black z-50">
           <div className="flex flex-col py-4 bg-white">
             {navLinks.map((link) => (
               <Link
