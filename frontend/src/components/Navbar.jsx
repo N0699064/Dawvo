@@ -16,12 +16,12 @@ const Navbar = () => {
 
   return (
     <nav className="relative bg-white z-50">
-      <div className="border-[5px] border-black px-4 py-4 md:px-20 md:py-10 flex justify-between items-center bg-white">
+      <div className="border-[5px] border-black px-6 py-6 md:px-20 md:py-10 flex justify-between items-center bg-white">
         <Link to="/" className="flex items-center">
           <img 
             src="https://customer-assets.emergentagent.com/job_1045df7f-45d6-4bd9-a099-b96d9fef1478/artifacts/nv29josx_B35DD144-A99A-4EFA-8C62-789D6F70D141%20%281%29.webp" 
             alt="DAVVO Energy Logo" 
-            className="h-16 md:h-56 lg:h-80"
+            className="h-44 sm:h-56 md:h-64 lg:h-80"
           />
         </Link>
         
