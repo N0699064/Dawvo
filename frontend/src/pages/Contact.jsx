@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
@@ -8,12 +8,31 @@ import { useToast } from '../hooks/use-toast';
 
 const Contact = () => {
   const { toast } = useToast();
+  const [scrollY, setScrollY] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     message: ''
   });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const getVisibility = (delay = 0) => {
+    const threshold = 150 + delay;
+    const progress = Math.min(Math.max((scrollY - threshold) / 300, 0), 1);
+    return {
+      opacity: progress,
+      transform: `translateY(${(1 - progress) * 60}px)`
+    };
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -24,7 +43,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Mock form submission
     toast({
       title: "Message Sent!",
       description: "Thank you for contacting DAVVO Energy. We'll get back to you soon.",
@@ -40,26 +58,39 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white">
       <section className="pt-20 pb-20 px-8">
+        <div className="h-40"></div>
         <div className="max-w-[1600px] mx-auto">
           <div className="px-16 py-20 mb-16">
             <div className="max-w-2xl">
-              <p className="text-xs text-gray-500 tracking-widest mb-6 uppercase font-light">
+              <p 
+                className="text-xs text-gray-400 tracking-[0.2em] mb-8 uppercase font-light transition-all duration-1000"
+                style={getVisibility(0)}
+              >
                 Contact Us
               </p>
-              <h1 className="text-5xl md:text-6xl font-light text-gray-900 leading-tight mb-8">
+              <h1 
+                className="text-6xl md:text-7xl font-extralight text-gray-900 leading-[1.1] mb-10 transition-all duration-1000"
+                style={getVisibility(150)}
+              >
                 Let's discuss your energy future
               </h1>
-              <p className="text-base text-gray-600 leading-relaxed font-light">
+              <p 
+                className="text-lg text-gray-600 leading-relaxed font-light transition-all duration-1000"
+                style={getVisibility(300)}
+              >
                 Get in touch with our team to learn how DAVVO Energy can transform your distributed energy infrastructure.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+          <div 
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 transition-all duration-1000"
+            style={getVisibility(500)}
+          >
             <Card className="border border-gray-200">
               <CardContent className="p-8 text-center">
                 <div className="inline-flex p-4 bg-gray-50 rounded-lg mb-4">
-                  <Mail className="h-6 w-6 text-[#2E7D32]" />
+                  <Mail className="h-6 w-6 text-gray-900" />
                 </div>
                 <h3 className="font-medium text-gray-900 mb-2">Email</h3>
                 <p className="text-gray-600">info@davvoenergy.com</p>
@@ -69,7 +100,7 @@ const Contact = () => {
             <Card className="border border-gray-200">
               <CardContent className="p-8 text-center">
                 <div className="inline-flex p-4 bg-gray-50 rounded-lg mb-4">
-                  <Phone className="h-6 w-6 text-[#2E7D32]" />
+                  <Phone className="h-6 w-6 text-gray-900" />
                 </div>
                 <h3 className="font-medium text-gray-900 mb-2">Phone</h3>
                 <p className="text-gray-600">+1 (555) 123-4567</p>
@@ -79,7 +110,7 @@ const Contact = () => {
             <Card className="border border-gray-200">
               <CardContent className="p-8 text-center">
                 <div className="inline-flex p-4 bg-gray-50 rounded-lg mb-4">
-                  <MapPin className="h-6 w-6 text-[#2E7D32]" />
+                  <MapPin className="h-6 w-6 text-gray-900" />
                 </div>
                 <h3 className="font-medium text-gray-900 mb-2">Location</h3>
                 <p className="text-gray-600">Global Operations</p>
@@ -87,7 +118,10 @@ const Contact = () => {
             </Card>
           </div>
 
-          <div className="max-w-2xl mx-auto">
+          <div 
+            className="max-w-2xl mx-auto transition-all duration-1000"
+            style={getVisibility(700)}
+          >
             <Card className="border border-gray-200">
               <CardContent className="p-10">
                 <h2 className="text-3xl font-light text-gray-900 mb-8">Send us a message</h2>
@@ -156,7 +190,7 @@ const Contact = () => {
 
                   <Button 
                     type="submit"
-                    className="w-full bg-[#2E7D32] hover:bg-[#1B5E20] text-white py-6 rounded-md text-base transition-all duration-300"
+                    className="w-full bg-gray-900 hover:bg-gray-800 text-white py-7 rounded-sm text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md"
                   >
                     Send Message
                   </Button>

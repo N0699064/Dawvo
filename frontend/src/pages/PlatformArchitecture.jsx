@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Database, Network, Cpu, Cloud, Lock, RefreshCw } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 
 const PlatformArchitecture = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const getVisibility = (delay = 0) => {
+    const threshold = 150 + delay;
+    const progress = Math.min(Math.max((scrollY - threshold) / 300, 0), 1);
+    return {
+      opacity: progress,
+      transform: `translateY(${(1 - progress) * 60}px)`
+    };
+  };
+
   const architectureComponents = [
     {
       icon: Cloud,
@@ -12,7 +32,7 @@ const PlatformArchitecture = () => {
       details: [
         'Multi-region deployment for high availability',
         'Auto-scaling based on demand',
-        ' 99.99% uptime SLA',
+        '99.99% uptime SLA',
         'Disaster recovery and backup systems'
       ]
     },
@@ -105,16 +125,26 @@ const PlatformArchitecture = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="pt-20 pb-20 px-8">
+        <div className="h-40"></div>
         <div className="max-w-[1600px] mx-auto">
           <div className="px-16 py-20">
             <div className="max-w-2xl">
-              <p className="text-xs text-gray-500 tracking-widest mb-6 uppercase font-light">
+              <p 
+                className="text-xs text-gray-400 tracking-[0.2em] mb-8 uppercase font-light transition-all duration-1000"
+                style={getVisibility(0)}
+              >
                 Platform Architecture
               </p>
-              <h1 className="text-5xl md:text-6xl font-light text-gray-900 leading-tight mb-8">
+              <h1 
+                className="text-6xl md:text-7xl font-extralight text-gray-900 leading-[1.1] mb-8 transition-all duration-1000"
+                style={getVisibility(150)}
+              >
                 Built for scale, designed for resilience
               </h1>
-              <p className="text-base text-gray-600 leading-relaxed font-light">
+              <p 
+                className="text-lg text-gray-600 leading-relaxed font-light transition-all duration-1000"
+                style={getVisibility(300)}
+              >
                 Our platform architecture combines cutting-edge technology with proven infrastructure patterns to deliver a robust, scalable solution for distributed energy optimization.
               </p>
             </div>
@@ -125,7 +155,10 @@ const PlatformArchitecture = () => {
       {/* Architecture Overview */}
       <section className="py-20 px-8">
         <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-16">
+          <div 
+            className="text-center mb-16 transition-all duration-1000"
+            style={getVisibility(600)}
+          >
             <h2 className="text-4xl font-light text-gray-900 mb-4">
               Core Components
             </h2>
@@ -138,25 +171,31 @@ const PlatformArchitecture = () => {
             {architectureComponents.map((component, index) => {
               const Icon = component.icon;
               return (
-                <Card key={index} className="border border-gray-200 hover:shadow-lg transition-all duration-300 group">
-                  <CardHeader>
-                    <div className="mb-4 inline-flex p-3 bg-gray-50 rounded-lg group-hover:bg-[#2E7D32] transition-colors duration-300">
-                      <Icon className="h-7 w-7 text-[#2E7D32] group-hover:text-white transition-colors duration-300" />
-                    </div>
-                    <CardTitle className="text-xl font-medium">{component.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 mb-4">{component.description}</p>
-                    <ul className="space-y-2">
-                      {component.details.map((detail, idx) => (
-                        <li key={idx} className="text-sm text-gray-500 flex items-start">
-                          <span className="text-[#2E7D32] mr-2">•</span>
-                          {detail}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                <div
+                  key={index}
+                  className="transition-all duration-1000"
+                  style={getVisibility(800 + index * 100)}
+                >
+                  <Card className="border border-gray-200 hover:shadow-lg transition-all duration-300 group h-full">
+                    <CardHeader>
+                      <div className="mb-4 inline-flex p-3 bg-gray-50 rounded-lg group-hover:bg-gray-900 transition-colors duration-300">
+                        <Icon className="h-7 w-7 text-gray-900 group-hover:text-white transition-colors duration-300" />
+                      </div>
+                      <CardTitle className="text-xl font-medium">{component.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-4">{component.description}</p>
+                      <ul className="space-y-2">
+                        {component.details.map((detail, idx) => (
+                          <li key={idx} className="text-sm text-gray-500 flex items-start">
+                            <span className="text-gray-900 mr-2">•</span>
+                            {detail}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
               );
             })}
           </div>
@@ -166,7 +205,10 @@ const PlatformArchitecture = () => {
       {/* Layered Architecture */}
       <section className="py-20 px-8 bg-gray-50">
         <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-16">
+          <div 
+            className="text-center mb-16 transition-all duration-1000"
+            style={getVisibility(1600)}
+          >
             <h2 className="text-4xl font-light text-gray-900 mb-4">
               Layered Architecture
             </h2>
@@ -177,32 +219,38 @@ const PlatformArchitecture = () => {
 
           <div className="space-y-4">
             {layers.map((layer, index) => (
-              <Card key={index} className="border-l-4 border-l-[#2E7D32] hover:shadow-md transition-all duration-300">
-                <CardContent className="p-8">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div className="mb-4 md:mb-0 md:flex-1">
-                      <h3 className="text-2xl font-medium text-gray-900 mb-2">
-                        {layer.name}
-                      </h3>
-                      <p className="text-gray-600">
-                        {layer.description}
-                      </p>
-                    </div>
-                    <div className="md:flex-1 md:ml-8">
-                      <div className="flex flex-wrap gap-2">
-                        {layer.technologies.map((tech, idx) => (
-                          <span 
-                            key={idx}
-                            className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-700"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+              <div
+                key={index}
+                className="transition-all duration-1000"
+                style={getVisibility(1800 + index * 100)}
+              >
+                <Card className="border-l-4 border-l-gray-900 hover:shadow-md transition-all duration-300">
+                  <CardContent className="p-8">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                      <div className="mb-4 md:mb-0 md:flex-1">
+                        <h3 className="text-2xl font-medium text-gray-900 mb-2">
+                          {layer.name}
+                        </h3>
+                        <p className="text-gray-600">
+                          {layer.description}
+                        </p>
+                      </div>
+                      <div className="md:flex-1 md:ml-8">
+                        <div className="flex flex-wrap gap-2">
+                          {layer.technologies.map((tech, idx) => (
+                            <span 
+                              key={idx}
+                              className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm text-gray-700"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -210,7 +258,10 @@ const PlatformArchitecture = () => {
 
       {/* Key Features */}
       <section className="py-20 px-8">
-        <div className="max-w-[1400px] mx-auto">
+        <div 
+          className="max-w-[1400px] mx-auto transition-all duration-1000"
+          style={getVisibility(2400)}
+        >
           <Tabs defaultValue="scalability" className="w-full">
             <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-12">
               <TabsTrigger value="scalability">Scalability</TabsTrigger>
@@ -226,15 +277,15 @@ const PlatformArchitecture = () => {
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <span className="text-[#2E7D32] mr-3 text-xl">✓</span>
+                    <span className="text-gray-900 mr-3 text-xl">✓</span>
                     <span className="text-gray-700">Auto-scaling based on real-time demand</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#2E7D32] mr-3 text-xl">✓</span>
+                    <span className="text-gray-900 mr-3 text-xl">✓</span>
                     <span className="text-gray-700">Load balancing across multiple regions</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#2E7D32] mr-3 text-xl">✓</span>
+                    <span className="text-gray-900 mr-3 text-xl">✓</span>
                     <span className="text-gray-700">Containerized deployment for rapid scaling</span>
                   </li>
                 </ul>
@@ -249,15 +300,15 @@ const PlatformArchitecture = () => {
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <span className="text-[#2E7D32] mr-3 text-xl">✓</span>
+                    <span className="text-gray-900 mr-3 text-xl">✓</span>
                     <span className="text-gray-700">99.99% uptime guarantee</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#2E7D32] mr-3 text-xl">✓</span>
+                    <span className="text-gray-900 mr-3 text-xl">✓</span>
                     <span className="text-gray-700">Automated backup and disaster recovery</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#2E7D32] mr-3 text-xl">✓</span>
+                    <span className="text-gray-900 mr-3 text-xl">✓</span>
                     <span className="text-gray-700">Real-time health monitoring and alerts</span>
                   </li>
                 </ul>
@@ -272,15 +323,15 @@ const PlatformArchitecture = () => {
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <span className="text-[#2E7D32] mr-3 text-xl">✓</span>
+                    <span className="text-gray-900 mr-3 text-xl">✓</span>
                     <span className="text-gray-700">Sub-second response times for critical operations</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#2E7D32] mr-3 text-xl">✓</span>
+                    <span className="text-gray-900 mr-3 text-xl">✓</span>
                     <span className="text-gray-700">Optimized database queries and caching</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-[#2E7D32] mr-3 text-xl">✓</span>
+                    <span className="text-gray-900 mr-3 text-xl">✓</span>
                     <span className="text-gray-700">Edge computing for reduced latency</span>
                   </li>
                 </ul>

@@ -14,13 +14,13 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Calculate visibility based on scroll position
+  // Calculate visibility based on scroll position - slower animations
   const getVisibility = (delay = 0) => {
-    const threshold = 100 + delay;
-    const progress = Math.min(Math.max((scrollY - threshold) / 200, 0), 1);
+    const threshold = 150 + delay;
+    const progress = Math.min(Math.max((scrollY - threshold) / 300, 0), 1);
     return {
       opacity: progress,
-      transform: `translateY(${(1 - progress) * 50}px)`
+      transform: `translateY(${(1 - progress) * 60}px)`
     };
   };
 
@@ -35,26 +35,26 @@ const Home = () => {
           <div className="px-16 py-20">
             <div className="max-w-3xl">
               <p 
-                className="text-xs text-gray-400 tracking-[0.2em] mb-8 uppercase font-light transition-all duration-700"
+                className="text-xs text-gray-400 tracking-[0.2em] mb-8 uppercase font-light transition-all duration-1000"
                 style={getVisibility(0)}
               >
                 Climate AI Optimisation Infrastructure
               </p>
               <h1 
-                className="text-6xl md:text-7xl font-extralight text-gray-900 leading-[1.1] mb-10 transition-all duration-700"
-                style={getVisibility(100)}
+                className="text-6xl md:text-7xl font-extralight text-gray-900 leading-[1.1] mb-10 transition-all duration-1000"
+                style={getVisibility(150)}
               >
                 AI-driven optimisation for distributed energy performance, resilience, and scalable clean infrastructure.
               </h1>
               <p 
-                className="text-lg text-gray-600 mb-12 leading-relaxed font-light transition-all duration-700"
-                style={getVisibility(200)}
+                className="text-lg text-gray-600 mb-12 leading-relaxed font-light transition-all duration-1000"
+                style={getVisibility(300)}
               >
                 DAVVO Energy builds infrastructure-grade climate AI systems that optimise distributed energy assets, enhance grid resilience, and accelerate clean energy integration.
               </p>
               <div 
-                className="flex gap-4 transition-all duration-700"
-                style={getVisibility(300)}
+                className="flex gap-4 transition-all duration-1000"
+                style={getVisibility(450)}
               >
                 <Button 
                   className="bg-gray-900 hover:bg-gray-800 text-white px-10 py-7 rounded-sm text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md"
