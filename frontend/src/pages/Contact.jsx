@@ -39,7 +39,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="pt-48 pb-20 px-8">
+      <section className="pt-64 pb-20 px-8">
         <div className="max-w-[1600px] mx-auto">
           <div className="px-16 py-20 mb-16">
             <div className="max-w-2xl">
