@@ -2,68 +2,59 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '../components/ui/button';
 
 const Home = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-
-    return () => {
-      if (heroRef.current) {
-        observer.unobserve(heroRef.current);
-      }
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
     };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Calculate visibility based on scroll position
+  const getVisibility = (delay = 0) => {
+    const threshold = 100 + delay;
+    const progress = Math.min(Math.max((scrollY - threshold) / 200, 0), 1);
+    return {
+      opacity: progress,
+      transform: `translateY(${(1 - progress) * 50}px)`
+    };
+  };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section with Scroll Animations */}
-      <section className="pt-20 pb-24 px-8 bg-white min-h-screen flex items-center" ref={heroRef}>
+      {/* Hero Section with Scroll-Triggered Animations */}
+      <section className="pt-20 pb-24 px-8 bg-white min-h-screen" ref={heroRef}>
+        {/* Add some initial spacing so content starts below */}
+        <div className="h-40"></div>
+        
         <div className="max-w-[1600px] mx-auto w-full">
           <div className="px-16 py-20">
             <div className="max-w-3xl">
               <p 
-                className={`text-xs text-gray-400 tracking-[0.2em] mb-8 uppercase font-light transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: '100ms' }}
+                className="text-xs text-gray-400 tracking-[0.2em] mb-8 uppercase font-light transition-all duration-700"
+                style={getVisibility(0)}
               >
                 Climate AI Optimisation Infrastructure
               </p>
               <h1 
-                className={`text-6xl md:text-7xl font-extralight text-gray-900 leading-[1.1] mb-10 transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: '200ms' }}
+                className="text-6xl md:text-7xl font-extralight text-gray-900 leading-[1.1] mb-10 transition-all duration-700"
+                style={getVisibility(100)}
               >
                 AI-driven optimisation for distributed energy performance, resilience, and scalable clean infrastructure.
               </h1>
               <p 
-                className={`text-lg text-gray-600 mb-12 leading-relaxed font-light transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: '300ms' }}
+                className="text-lg text-gray-600 mb-12 leading-relaxed font-light transition-all duration-700"
+                style={getVisibility(200)}
               >
                 DAVVO Energy builds infrastructure-grade climate AI systems that optimise distributed energy assets, enhance grid resilience, and accelerate clean energy integration.
               </p>
               <div 
-                className={`flex gap-4 transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: '400ms' }}
+                className="flex gap-4 transition-all duration-700"
+                style={getVisibility(300)}
               >
                 <Button 
                   className="bg-gray-900 hover:bg-gray-800 text-white px-10 py-7 rounded-sm text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md"
