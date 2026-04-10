@@ -125,7 +125,7 @@ const PlatformArchitecture = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="pt-20 pb-20 px-8">
-        <div className="h-40"></div>
+        <div className="h-20"></div>
         <div className="max-w-[1600px] mx-auto">
           <div className="px-16 py-20">
             <div className="max-w-2xl">
