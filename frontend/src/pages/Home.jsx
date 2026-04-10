@@ -6,8 +6,8 @@ const Home = () => {
   const { setRef, getStyle } = useScrollReveal();
 
   return (
-    <div className="min-h-screen bg-white">
-      <section className="pt-8 md:pt-20 pb-16 md:pb-24 px-4 md:px-8 bg-white">
+    <div className="bg-white">
+      <section className="pt-8 md:pt-20 pb-16 md:pb-24 px-4 md:px-8 bg-white lg:min-h-screen">
         <div className="h-2 md:h-8"></div>
         
         <div className="max-w-[1200px] mx-auto w-full">
