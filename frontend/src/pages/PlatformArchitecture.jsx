@@ -1,40 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card, CardContent } from '../components/ui/card';
 import { ChevronRight } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const PlatformArchitecture = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const [revealed, setRevealed] = useState(new Set());
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const getVisibility = (delay = 0, index = 0) => {
-    const threshold = 150 + delay;
-    const progress = Math.min(Math.max((scrollY - threshold) / 300, 0), 1);
-    
-    if (progress >= 1 && !revealed.has(index)) {
-      setRevealed(new Set([...revealed, index]));
-    }
-    
-    if (revealed.has(index)) {
-      return {
-        opacity: 1,
-        transform: 'translateY(0px)'
-      };
-    }
-    
-    return {
-      opacity: progress,
-      transform: `translateY(${(1 - progress) * 60}px)`
-    };
-  };
+  const { setRef, getStyle } = useScrollReveal();
 
   const layers = [
     {
@@ -90,32 +60,36 @@ const PlatformArchitecture = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-8 bg-gradient-to-b from-white to-gray-50">
-        <div className="h-8"></div>
+      <section className="pt-8 md:pt-20 pb-10 md:pb-16 px-4 md:px-8 bg-gradient-to-b from-white to-gray-50">
+        <div className="h-2 md:h-8"></div>
         <div className="max-w-[1200px] mx-auto">
-          <div className="px-8">
+          <div className="px-0 md:px-8">
             <p 
-              className="text-xs text-gray-500 tracking-[0.2em] mb-6 uppercase font-light transition-all duration-600"
-              style={getVisibility(0, 0)}
+              ref={setRef(0)} data-index="0"
+              className="text-xs text-gray-500 tracking-[0.2em] mb-4 md:mb-6 uppercase font-light"
+              style={getStyle(0)}
             >
               Platform Architecture
             </p>
             <h1 
-              className="text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-8 transition-all duration-600"
-              style={getVisibility(150, 1)}
+              ref={setRef(1)} data-index="1"
+              className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 leading-tight mb-6 md:mb-8"
+              style={getStyle(1, 150)}
             >
               Davwo Energy Platform Architecture
             </h1>
             <div className="max-w-3xl">
               <p 
-                className="text-base text-gray-800 leading-relaxed font-light mb-6 transition-all duration-600"
-                style={getVisibility(300, 2)}
+                ref={setRef(2)} data-index="2"
+                className="text-sm md:text-base text-gray-800 leading-relaxed font-light mb-4 md:mb-6"
+                style={getStyle(2, 300)}
               >
                 Davwo Energy is developing a Climate AI Optimisation Infrastructure platform designed to improve how distributed renewable energy systems are monitored, coordinated, and optimised.
               </p>
               <p 
-                className="text-base text-gray-700 leading-relaxed font-light transition-all duration-600"
-                style={getVisibility(350, 3)}
+                ref={setRef(3)} data-index="3"
+                className="text-sm md:text-base text-gray-700 leading-relaxed font-light"
+                style={getStyle(3, 350)}
               >
                 As energy systems become increasingly decentralised, the need for intelligent digital infrastructure capable of integrating multiple technologies is critical.
               </p>
@@ -124,67 +98,75 @@ const PlatformArchitecture = () => {
         </div>
       </section>
 
-      {/* Core Architecture Layers - Visual Cards */}
-      <section className="py-20 px-8">
+      {/* Core Architecture Layers */}
+      <section className="py-12 md:py-20 px-4 md:px-8">
         <div className="max-w-[1200px] mx-auto">
-          <div className="px-8">
+          <div className="px-0 md:px-8">
             <h2 
-              className="text-2xl font-light text-gray-900 mb-4 transition-all duration-600"
-              style={getVisibility(500, 4)}
+              ref={setRef(4)} data-index="4"
+              className="text-xl md:text-2xl font-light text-gray-900 mb-3 md:mb-4"
+              style={getStyle(4)}
             >
               Core Architecture Layers
             </h2>
             <p 
-              className="text-sm text-gray-600 font-light mb-12 transition-all duration-600"
-              style={getVisibility(550, 5)}
+              ref={setRef(5)} data-index="5"
+              className="text-xs md:text-sm text-gray-600 font-light mb-8 md:mb-12"
+              style={getStyle(5, 100)}
             >
               Four interconnected layers powering intelligent energy systems
             </p>
 
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               {layers.map((layer, index) => (
-                <Card
+                <div
                   key={index}
-                  className="border border-gray-200 hover:border-gray-900 transition-all duration-300 hover:shadow-xl group overflow-hidden"
-                  style={getVisibility(600 + index * 150, 6 + index)}
+                  ref={setRef(6 + index)}
+                  data-index={6 + index}
+                  style={getStyle(6 + index)}
                 >
-                  <CardContent className="p-0">
-                    <div className="flex">
-                      {/* Number Badge */}
-                      <div className="w-24 bg-gray-900 flex items-center justify-center group-hover:bg-gray-800 transition-colors">
-                        <span className="text-4xl font-extralight text-white">
-                          {layer.number}
-                        </span>
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="flex-1 p-8">
-                        <h3 className="text-xl font-normal text-gray-900 mb-4 flex items-center">
-                          {layer.title}
-                          <ChevronRight className="ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-1 transition-all" />
-                        </h3>
-                        
-                        <p className="text-base text-gray-700 leading-relaxed font-light mb-6">
-                          {layer.description}
-                        </p>
-                        
-                        {/* Features Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-                          {layer.points.map((point, idx) => (
-                            <div key={idx} className="flex items-start gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-gray-900 mt-2 flex-shrink-0"></div>
-                              <span className="text-sm text-gray-700 font-light">{point}</span>
-                            </div>
-                          ))}
+                  <Card
+                    className="border border-gray-200 hover:border-gray-900 transition-all duration-300 hover:shadow-xl group overflow-hidden"
+                    data-testid={`layer-card-${index}`}
+                  >
+                    <CardContent className="p-0">
+                      <div className="flex flex-col md:flex-row">
+                        {/* Number Badge */}
+                        <div className="w-full md:w-24 bg-gray-900 flex items-center justify-center group-hover:bg-gray-800 transition-colors py-3 md:py-0">
+                          <span className="text-2xl md:text-4xl font-extralight text-white">
+                            {layer.number}
+                          </span>
                         </div>
                         
-                        <p className="text-sm text-gray-600 leading-relaxed font-light italic border-l-2 border-gray-200 pl-4">
-                          {layer.footer}
-                        </p>
+                        {/* Content */}
+                        <div className="flex-1 p-5 md:p-8">
+                          <h3 className="text-base md:text-xl font-normal text-gray-900 mb-3 md:mb-4 flex items-center">
+                            {layer.title}
+                            <ChevronRight className="ml-2 h-4 w-4 md:h-5 md:w-5 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-1 transition-all" />
+                          </h3>
+                          
+                          <p className="text-sm md:text-base text-gray-700 leading-relaxed font-light mb-4 md:mb-6">
+                            {layer.description}
+                          </p>
+                          
+                          {/* Features Grid */}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 mb-4 md:mb-6">
+                            {layer.points.map((point, idx) => (
+                              <div key={idx} className="flex items-start gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full bg-gray-900 mt-1.5 md:mt-2 flex-shrink-0"></div>
+                                <span className="text-xs md:text-sm text-gray-700 font-light">{point}</span>
+                              </div>
+                            ))}
+                          </div>
+                          
+                          <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-light italic border-l-2 border-gray-200 pl-3 md:pl-4">
+                            {layer.footer}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </div>
               ))}
             </div>
           </div>
@@ -192,43 +174,43 @@ const PlatformArchitecture = () => {
       </section>
 
       {/* Platform Integration */}
-      <section className="py-20 px-8 bg-gray-50">
+      <section className="py-12 md:py-20 px-4 md:px-8 bg-gray-50">
         <div className="max-w-[1200px] mx-auto">
-          <div className="px-8">
+          <div className="px-0 md:px-8">
             <div 
-              className="transition-all duration-600"
-              style={getVisibility(1400, 10)}
+              ref={setRef(10)} data-index="10"
+              style={getStyle(10)}
             >
-              <h2 className="text-2xl font-light text-gray-900 mb-6">
+              <h2 className="text-xl md:text-2xl font-light text-gray-900 mb-4 md:mb-6">
                 Platform Integration
               </h2>
-              <p className="text-base text-gray-800 leading-relaxed font-light mb-6">
+              <p className="text-sm md:text-base text-gray-800 leading-relaxed font-light mb-4 md:mb-6">
                 The Davwo Energy platform integrates these layers into a unified system:
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                 <Card className="border-none bg-white shadow-sm hover:shadow-md transition-all">
-                  <CardContent className="p-6">
-                    <div className="w-8 h-1 bg-gray-900 mb-4"></div>
-                    <p className="text-sm text-gray-700 font-light">Users can access clean energy technologies</p>
+                  <CardContent className="p-4 md:p-6">
+                    <div className="w-8 h-1 bg-gray-900 mb-3 md:mb-4"></div>
+                    <p className="text-xs md:text-sm text-gray-700 font-light">Users can access clean energy technologies</p>
                   </CardContent>
                 </Card>
                 <Card className="border-none bg-white shadow-sm hover:shadow-md transition-all">
-                  <CardContent className="p-6">
-                    <div className="w-8 h-1 bg-gray-900 mb-4"></div>
-                    <p className="text-sm text-gray-700 font-light">Energy systems are monitored in real time</p>
+                  <CardContent className="p-4 md:p-6">
+                    <div className="w-8 h-1 bg-gray-900 mb-3 md:mb-4"></div>
+                    <p className="text-xs md:text-sm text-gray-700 font-light">Energy systems are monitored in real time</p>
                   </CardContent>
                 </Card>
                 <Card className="border-none bg-white shadow-sm hover:shadow-md transition-all">
-                  <CardContent className="p-6">
-                    <div className="w-8 h-1 bg-gray-900 mb-4"></div>
-                    <p className="text-sm text-gray-700 font-light">Artificial intelligence optimises system performance</p>
+                  <CardContent className="p-4 md:p-6">
+                    <div className="w-8 h-1 bg-gray-900 mb-3 md:mb-4"></div>
+                    <p className="text-xs md:text-sm text-gray-700 font-light">Artificial intelligence optimises system performance</p>
                   </CardContent>
                 </Card>
                 <Card className="border-none bg-white shadow-sm hover:shadow-md transition-all">
-                  <CardContent className="p-6">
-                    <div className="w-8 h-1 bg-gray-900 mb-4"></div>
-                    <p className="text-sm text-gray-700 font-light">Distributed energy resources are intelligently coordinated</p>
+                  <CardContent className="p-4 md:p-6">
+                    <div className="w-8 h-1 bg-gray-900 mb-3 md:mb-4"></div>
+                    <p className="text-xs md:text-sm text-gray-700 font-light">Distributed energy resources are intelligently coordinated</p>
                   </CardContent>
                 </Card>
               </div>
@@ -238,25 +220,25 @@ const PlatformArchitecture = () => {
       </section>
 
       {/* Technology Vision */}
-      <section className="py-20 px-8">
+      <section className="py-12 md:py-20 px-4 md:px-8">
         <div className="max-w-[1200px] mx-auto">
-          <div className="px-8">
+          <div className="px-0 md:px-8">
             <div 
-              className="transition-all duration-600"
-              style={getVisibility(1800, 11)}
+              ref={setRef(11)} data-index="11"
+              style={getStyle(11)}
             >
-              <h2 className="text-2xl font-light text-gray-900 mb-6">
+              <h2 className="text-xl md:text-2xl font-light text-gray-900 mb-4 md:mb-6">
                 Technology Vision
               </h2>
-              <p className="text-base text-gray-800 leading-relaxed font-light mb-8 max-w-3xl">
+              <p className="text-sm md:text-base text-gray-800 leading-relaxed font-light mb-6 md:mb-8 max-w-3xl">
                 Davwo Energy aims to contribute to the development of next-generation digital infrastructure for clean energy systems, supporting the transition toward decentralised, data-driven, and optimised energy ecosystems.
               </p>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                 {['Scalability', 'Integration', 'Optimization', 'Sustainability'].map((item, idx) => (
                   <div key={idx} className="group">
-                    <div className="h-1 w-12 bg-gray-900 mb-4 group-hover:w-full transition-all duration-300"></div>
-                    <p className="text-sm font-medium text-gray-900">{item}</p>
+                    <div className="h-1 w-10 md:w-12 bg-gray-900 mb-3 md:mb-4 group-hover:w-full transition-all duration-300"></div>
+                    <p className="text-xs md:text-sm font-medium text-gray-900">{item}</p>
                     <p className="text-xs text-gray-600 font-light mt-1">Focus Area</p>
                   </div>
                 ))}
@@ -267,23 +249,23 @@ const PlatformArchitecture = () => {
       </section>
 
       {/* Development Outlook */}
-      <section className="py-20 px-8 bg-gray-900 text-white">
+      <section className="py-12 md:py-20 px-4 md:px-8 bg-gray-900 text-white">
         <div className="max-w-[1200px] mx-auto">
-          <div className="px-8">
+          <div className="px-0 md:px-8">
             <div 
-              className="transition-all duration-600"
-              style={getVisibility(2000, 12)}
+              ref={setRef(12)} data-index="12"
+              style={getStyle(12)}
             >
-              <h2 className="text-2xl font-light mb-6">
+              <h2 className="text-xl md:text-2xl font-light mb-4 md:mb-6">
                 Development Outlook
               </h2>
-              <p className="text-base text-gray-300 leading-relaxed font-light mb-4 max-w-3xl">
+              <p className="text-sm md:text-base text-gray-300 leading-relaxed font-light mb-4 max-w-3xl">
                 The Davwo Energy platform is currently in the early development phase, with a structured roadmap guiding its evolution toward deployment.
               </p>
-              <div className="flex items-center gap-4 mt-8">
-                <div className="text-4xl font-extralight">2027</div>
-                <div className="h-12 w-px bg-gray-700"></div>
-                <p className="text-sm text-gray-400 font-light">
+              <div className="flex items-center gap-3 md:gap-4 mt-6 md:mt-8">
+                <div className="text-3xl md:text-4xl font-extralight">2027</div>
+                <div className="h-10 md:h-12 w-px bg-gray-700"></div>
+                <p className="text-xs md:text-sm text-gray-400 font-light">
                   Initial platform launch targeted for UK and European markets
                 </p>
               </div>
