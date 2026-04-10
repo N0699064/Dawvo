@@ -29,7 +29,7 @@ const Home = () => {
       {/* Hero Section with Scroll-Triggered Animations */}
       <section className="pt-20 pb-24 px-8 bg-white min-h-screen" ref={heroRef}>
         {/* Add some initial spacing so content starts below */}
-        <div className="h-20"></div>
+        <div className="h-8"></div>
         
         <div className="max-w-[1600px] mx-auto w-full">
           <div className="px-16 py-20">
