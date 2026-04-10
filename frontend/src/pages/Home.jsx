@@ -30,28 +30,28 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-80 pb-20 px-8">
+      <section className="pt-96 pb-24 px-8 bg-white">
         <div className="max-w-[1600px] mx-auto">
           <div className="px-16 py-20">
-            <div className="max-w-2xl">
-              <p className="text-xs text-gray-500 tracking-widest mb-6 uppercase font-light">
+            <div className="max-w-3xl">
+              <p className="text-xs text-gray-400 tracking-[0.2em] mb-8 uppercase font-light">
                 Climate AI Optimisation Infrastructure
               </p>
-              <h1 className="text-5xl md:text-6xl font-light text-gray-900 leading-tight mb-8">
+              <h1 className="text-6xl md:text-7xl font-extralight text-gray-900 leading-[1.1] mb-10">
                 AI-driven optimisation for distributed energy performance, resilience, and scalable clean infrastructure.
               </h1>
-              <p className="text-base text-gray-600 mb-10 leading-relaxed font-light">
+              <p className="text-lg text-gray-600 mb-12 leading-relaxed font-light">
                 DAVVO Energy builds infrastructure-grade climate AI systems that optimise distributed energy assets, enhance grid resilience, and accelerate clean energy integration.
               </p>
               <div className="flex gap-4">
                 <Button 
-                  className="bg-[#2E7D32] hover:bg-[#1B5E20] text-white px-8 py-6 rounded-md text-sm font-medium transition-all duration-300"
+                  className="bg-gray-900 hover:bg-gray-800 text-white px-10 py-7 rounded-sm text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md"
                 >
                   Explore the Platform
                 </Button>
                 <Button 
                   variant="outline"
-                  className="border-2 border-gray-900 hover:bg-gray-50 text-gray-900 px-8 py-6 rounded-md text-sm font-medium transition-all duration-300"
+                  className="border-2 border-gray-900 hover:bg-gray-900 hover:text-white text-gray-900 px-10 py-7 rounded-sm text-sm font-medium transition-all duration-300"
                 >
                   Partner With Us
                 </Button>

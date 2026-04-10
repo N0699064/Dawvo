@@ -1,12 +1,14 @@
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
+    background-color: #ffffff;
 }
 
-/* Remove default margins */
+/* Remove default margins and ensure bright white */
 body, #root, .App {
     margin: 0;
     padding: 0;
+    background-color: #ffffff;
 }
 
 /* Smooth transitions for interactive elements */
@@ -18,4 +20,10 @@ button, a {
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff;
+}
+
+/* Tesla-like sleek design */
+* {
+    box-sizing: border-box;
 }
