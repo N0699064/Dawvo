@@ -21,17 +21,17 @@ const Navbar = () => {
           <img 
             src="https://customer-assets.emergentagent.com/job_1045df7f-45d6-4bd9-a099-b96d9fef1478/artifacts/nv29josx_B35DD144-A99A-4EFA-8C62-789D6F70D141%20%281%29.webp" 
             alt="DAVVO Energy Logo" 
-            className="h-64 md:h-56 lg:h-64"
+            className="h-56 md:h-64 lg:h-80"
           />
         </Link>
         
         {/* Desktop Navigation - Single Line */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-normal tracking-wide transition-all duration-300 hover:text-gray-900 uppercase whitespace-nowrap relative ${
+              className={`text-base font-normal tracking-wide transition-all duration-300 hover:text-gray-900 uppercase whitespace-nowrap relative ${
                 location.pathname === link.path 
                   ? 'text-gray-900' 
                   : 'text-gray-600'
