@@ -193,15 +193,15 @@ const About = () => {
               Founding Team
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
               {/* Founder */}
               <div 
                 ref={setRef(14)} data-index="14"
                 style={getStyle(14)}
                 data-testid="founder-card"
               >
-                <div className="mb-6 md:mb-8">
-                  <div className="w-full aspect-[4/5] overflow-hidden bg-gray-100">
+                <div className="mb-4 md:mb-6">
+                  <div className="w-full aspect-[3/4] overflow-hidden bg-gray-100">
                     <img 
                       src="https://customer-assets.emergentagent.com/job_28e960a8-a78e-435a-ac6d-9ef32f1cc9c1/artifacts/r9n4qt9f_WhatsApp%20Image%202026-04-06%20at%2013.11.13.jpeg"
                       alt="Awikpe Anirejoritse Collins"
@@ -209,10 +209,10 @@ const About = () => {
                     />
                   </div>
                 </div>
-                <h3 className="text-lg md:text-xl font-medium text-gray-900 mb-1">
+                <h3 className="text-base md:text-lg font-medium text-gray-900 mb-1">
                   Awikpe Anirejoritse Collins
                 </h3>
-                <p className="text-xs md:text-sm text-gray-500 font-light tracking-wide uppercase mb-4 md:mb-6">
+                <p className="text-xs text-gray-500 font-light tracking-wide uppercase mb-3 md:mb-4">
                   Founder & CEO
                 </p>
                 <p className="text-xs md:text-sm text-gray-700 leading-relaxed font-light">
@@ -226,8 +226,8 @@ const About = () => {
                 style={getStyle(15)}
                 data-testid="cofounder-card"
               >
-                <div className="mb-6 md:mb-8">
-                  <div className="w-full aspect-[4/5] overflow-hidden bg-gray-100">
+                <div className="mb-4 md:mb-6">
+                  <div className="w-full aspect-[3/4] overflow-hidden bg-gray-100">
                     <img 
                       src="https://customer-assets.emergentagent.com/job_28e960a8-a78e-435a-ac6d-9ef32f1cc9c1/artifacts/xn01c8f0_WhatsApp%20Image%202026-04-06%20at%2013.11.32.jpeg"
                       alt="Salma (Shamma) Chentite"
@@ -235,14 +235,40 @@ const About = () => {
                     />
                   </div>
                 </div>
-                <h3 className="text-lg md:text-xl font-medium text-gray-900 mb-1">
+                <h3 className="text-base md:text-lg font-medium text-gray-900 mb-1">
                   Salma (Shamma) Chentite
                 </h3>
-                <p className="text-xs md:text-sm text-gray-500 font-light tracking-wide uppercase mb-4 md:mb-6">
+                <p className="text-xs text-gray-500 font-light tracking-wide uppercase mb-3 md:mb-4">
                   Co-Founder & Chief Operating Officer
                 </p>
                 <p className="text-xs md:text-sm text-gray-700 leading-relaxed font-light">
                   Salma Chentite is an Environmental Advisor at Costain Group PLC and an Environmental Science student at Brunel University London. Her work focuses on sustainable infrastructure, environmental impact assessment, and advancing environmentally responsible practices in large-scale infrastructure projects.
+                </p>
+              </div>
+
+              {/* Lead Technical Architect */}
+              <div 
+                ref={setRef(16)} data-index="16"
+                style={getStyle(16)}
+                data-testid="tech-lead-card"
+              >
+                <div className="mb-4 md:mb-6">
+                  <div className="w-full aspect-[3/4] overflow-hidden bg-gray-100">
+                    <img 
+                      src="https://customer-assets.emergentagent.com/job_28e960a8-a78e-435a-ac6d-9ef32f1cc9c1/artifacts/434zd18v_JeffConrad21595.png"
+                      alt="Jeff Conrad"
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+                <h3 className="text-base md:text-lg font-medium text-gray-900 mb-1">
+                  Jeff Conrad
+                </h3>
+                <p className="text-xs text-gray-500 font-light tracking-wide uppercase mb-3 md:mb-4">
+                  Lead Technical Architect
+                </p>
+                <p className="text-xs md:text-sm text-gray-700 leading-relaxed font-light">
+                  Jeff Conrad studied Software Engineering at Nottingham Trent University. His expertise spans artificial intelligence, deep learning, and scalable system architecture, driving the technical development of Davwo Energy's Climate AI infrastructure platform.
                 </p>
               </div>
             </div>
@@ -255,9 +281,9 @@ const About = () => {
         <div className="max-w-[1200px] mx-auto">
           <div className="px-0 md:px-8">
             <div 
-              ref={setRef(16)} data-index="16"
+              ref={setRef(17)} data-index="17"
               className="max-w-3xl"
-              style={getStyle(16)}
+              style={getStyle(17)}
             >
               <h2 
                 className="text-xl md:text-2xl font-light mb-4 md:mb-6"
