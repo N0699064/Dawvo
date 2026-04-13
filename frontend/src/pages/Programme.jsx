@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '../components/ui/card';
-import { Cloud, Database, Zap, Network } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const Programme = () => {
@@ -27,28 +27,24 @@ const Programme = () => {
 
   const layers = [
     {
-      number: '01', icon: Cloud,
+      number: '01',
       title: 'Clean Energy Marketplace Layer',
-      description: 'Access to distributed renewable energy technologies and services. Connect with solar systems, battery storage, EV charging infrastructure, and clean energy solutions.',
-      color: 'from-blue-50 to-cyan-50'
+      description: 'Access to distributed renewable energy technologies and services. Connect with solar systems, battery storage, EV charging infrastructure, and clean energy solutions.'
     },
     {
-      number: '02', icon: Database,
+      number: '02',
       title: 'Monitoring & Analytics Layer',
-      description: 'Real-time visibility into energy systems. Track generation, consumption, performance, efficiency, and sustainability metrics across your infrastructure.',
-      color: 'from-green-50 to-emerald-50'
+      description: 'Real-time visibility into energy systems. Track generation, consumption, performance, efficiency, and sustainability metrics across your infrastructure.'
     },
     {
-      number: '03', icon: Zap,
+      number: '03',
       title: 'Climate AI Optimisation Layer',
-      description: 'Intelligence engine analyzing real-time and historical data. Optimizes consumption, provides predictive insights, and supports cost efficiency.',
-      color: 'from-purple-50 to-violet-50'
+      description: 'Intelligence engine analyzing real-time and historical data. Optimizes consumption, provides predictive insights, and supports cost efficiency.'
     },
     {
-      number: '04', icon: Network,
+      number: '04',
       title: 'Distributed Energy Coordination Layer',
-      description: 'Coordinates solar, battery storage, and EV charging systems. Manages distributed resources and enables intelligent energy flow across locations.',
-      color: 'from-orange-50 to-amber-50'
+      description: 'Coordinates solar, battery storage, and EV charging systems. Manages distributed resources and enables intelligent energy flow across locations.'
     }
   ];
 
@@ -99,7 +95,7 @@ const Programme = () => {
         </div>
       </section>
 
-      {/* Interactive Layer Cards */}
+      {/* Core Architecture Layers - Accordion */}
       <section className="py-12 md:py-20 px-4 md:px-8">
         <div className="max-w-[1200px] mx-auto">
           <div className="px-0 md:px-8">
@@ -111,61 +107,40 @@ const Programme = () => {
               Core Architecture Layers
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              {layers.map((layer, index) => {
-                const Icon = layer.icon;
-                return (
-                  <div
-                    key={index}
-                    ref={setRef(4 + index)}
-                    data-index={4 + index}
-                    style={getStyle(4 + index)}
+            <div 
+              ref={setRef(4)} data-index="4"
+              className="max-w-3xl mx-auto"
+              style={getStyle(4)}
+            >
+              {layers.map((layer, index) => (
+                <div
+                  key={index}
+                  className="border-b border-gray-200 last:border-b-0"
+                  data-testid={`programme-accordion-${index}`}
+                >
+                  <button
+                    onClick={() => setActiveCard(activeCard === index ? null : index)}
+                    className="w-full flex items-center justify-between py-5 md:py-6 text-left group"
                   >
-                    <Card
-                      className={`border-2 transition-all duration-500 cursor-pointer overflow-hidden ${
-                        activeCard === index 
-                          ? 'border-gray-900 shadow-2xl md:scale-105' 
-                          : 'border-gray-200 hover:border-gray-400 hover:shadow-lg'
-                      }`}
-                      onMouseEnter={() => setActiveCard(index)}
-                      onMouseLeave={() => setActiveCard(null)}
-                      data-testid={`programme-card-${index}`}
-                    >
-                      <CardContent className="p-0">
-                        <div className={`p-5 md:p-8 bg-gradient-to-br ${layer.color} transition-all duration-500`}>
-                          <div className="flex items-start justify-between">
-                            <div className={`p-3 md:p-4 bg-white rounded-lg shadow-sm transition-all duration-500 ${
-                              activeCard === index ? 'scale-110' : ''
-                            }`}>
-                              <Icon className="h-6 w-6 md:h-8 md:w-8 text-gray-900" />
-                            </div>
-                            <span className="text-4xl md:text-5xl font-extralight text-gray-300">
-                              {layer.number}
-                            </span>
-                          </div>
-                        </div>
-                        
-                        <div className="p-5 md:p-8">
-                          <h3 className="text-base md:text-lg font-medium text-gray-900 mb-2 md:mb-3">
-                            {layer.title}
-                          </h3>
-                          <p className="text-xs md:text-sm text-gray-700 leading-relaxed font-light">
-                            {layer.description}
-                          </p>
-                          
-                          <div className="mt-4 md:mt-6 h-1 bg-gray-100 rounded overflow-hidden">
-                            <div 
-                              className={`h-full bg-gray-900 transition-all duration-700 ${
-                                activeCard === index ? 'w-full' : 'w-0'
-                              }`}
-                            ></div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                    <div className="flex items-center gap-4 md:gap-6">
+                      <span className="text-sm md:text-base font-light text-gray-400">{layer.number}</span>
+                      <span className="text-sm md:text-base font-normal text-gray-900 group-hover:text-gray-600 transition-colors">
+                        {layer.title}
+                      </span>
+                    </div>
+                    <ChevronDown className={`h-4 w-4 md:h-5 md:w-5 text-gray-400 transition-transform duration-300 flex-shrink-0 ml-4 ${
+                      activeCard === index ? 'rotate-180' : ''
+                    }`} />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-300 ${
+                    activeCard === index ? 'max-h-40 pb-5 md:pb-6' : 'max-h-0'
+                  }`}>
+                    <p className="text-xs md:text-sm text-gray-600 leading-relaxed font-light pl-8 md:pl-12">
+                      {layer.description}
+                    </p>
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
         </div>
