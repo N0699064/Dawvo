@@ -255,7 +255,7 @@ const About = () => {
                 <div className="mb-4 md:mb-6">
                   <div className="w-full aspect-[3/4] overflow-hidden bg-gray-100">
                     <img 
-                      src="https://customer-assets.emergentagent.com/job_28e960a8-a78e-435a-ac6d-9ef32f1cc9c1/artifacts/434zd18v_JeffConrad21595.png"
+                      src="https://customer-assets.emergentagent.com/job_28e960a8-a78e-435a-ac6d-9ef32f1cc9c1/artifacts/ctcgsl6x_Generated%20Image%20April%2014%2C%202026%20-%2012_33AM.png"
                       alt="Jeff Conrad"
                       className="w-full h-full object-cover object-top"
                     />
