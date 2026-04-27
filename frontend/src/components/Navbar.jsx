@@ -20,7 +20,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center">
           <img 
             src="https://customer-assets.emergentagent.com/job_1045df7f-45d6-4bd9-a099-b96d9fef1478/artifacts/nv29josx_B35DD144-A99A-4EFA-8C62-789D6F70D141%20%281%29.webp" 
-            alt="DAVVO Energy Logo" 
+            alt="DAVWO Energy Logo" 
             className="h-44 sm:h-56 md:h-64 lg:h-80"
           />
         </Link>

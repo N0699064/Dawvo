@@ -28,7 +28,7 @@ const Contact = () => {
     e.preventDefault();
     toast({
       title: "Message Sent!",
-      description: "Thank you for contacting DAVVO Energy. We'll get back to you soon.",
+      description: "Thank you for contacting DAVWO Energy. We'll get back to you soon.",
     });
     setFormData({ name: '', email: '', company: '', message: '' });
   };
@@ -59,7 +59,7 @@ const Contact = () => {
                 className="text-sm md:text-base text-gray-800 leading-relaxed font-light"
                 style={getStyle(2, 300)}
               >
-                Get in touch with our team to learn how DAVVO Energy can transform your distributed energy infrastructure.
+                Get in touch with our team to learn how DAVWO Energy can transform your distributed energy infrastructure.
               </p>
             </div>
           </div>
@@ -75,7 +75,7 @@ const Contact = () => {
                   <Mail className="h-5 w-5 md:h-6 md:w-6 text-gray-900" />
                 </div>
                 <h3 className="font-medium text-gray-900 mb-1 md:mb-2 text-sm md:text-base">Email</h3>
-                <p className="text-xs md:text-sm text-gray-700 font-light">info@davvoenergy.com</p>
+                <p className="text-xs md:text-sm text-gray-700 font-light">info@davwoenergy.com</p>
               </CardContent>
             </Card>
 
