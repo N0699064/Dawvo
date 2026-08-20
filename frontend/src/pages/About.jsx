@@ -219,33 +219,6 @@ const About = () => {
                   Awikpe Anirejoritse Collins is the founder of Davwo Energy and holds a Master's degree in International Relations from the University of Hertfordshire. His work focuses on climate innovation, energy transition, and the development of intelligent digital infrastructure for clean energy systems.
                 </p>
               </div>
-
-              {/* Co-Founder */}
-              <div 
-                ref={setRef(15)} data-index="15"
-                style={getStyle(15)}
-                data-testid="cofounder-card"
-              >
-                <div className="mb-4 md:mb-6">
-                  <div className="w-full aspect-[3/4] overflow-hidden bg-gray-100">
-                    <img 
-                      src="https://customer-assets.emergentagent.com/job_28e960a8-a78e-435a-ac6d-9ef32f1cc9c1/artifacts/xn01c8f0_WhatsApp%20Image%202026-04-06%20at%2013.11.32.jpeg"
-                      alt="Salma (Shamma) Chentite"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                </div>
-                <h3 className="text-base md:text-lg font-medium text-gray-900 mb-1">
-                  Salma (Shamma) Chentite
-                </h3>
-                <p className="text-xs text-gray-500 font-light tracking-wide uppercase mb-3 md:mb-4">
-                  Co-Founder & Chief Operating Officer
-                </p>
-                <p className="text-xs md:text-sm text-gray-700 leading-relaxed font-light">
-                  Salma Chentite is an Environmental Advisor at Costain Group PLC and an Environmental Science student at Brunel University London. Her work focuses on sustainable infrastructure, environmental impact assessment, and advancing environmentally responsible practices in large-scale infrastructure projects.
-                </p>
-              </div>
-
               {/* Lead Technical Architect */}
               <div 
                 ref={setRef(16)} data-index="16"
