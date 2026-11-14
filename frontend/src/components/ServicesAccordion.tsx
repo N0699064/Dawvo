@@ -5,7 +5,7 @@ import { SOLUTIONS } from '../data/site';
 import { Img } from './Img';
 
 export function ServicesAccordion({ title = 'Explore what we can do for you' }: { title?: string }) {
-  const [openId, setOpenId] = useState<string>(SOLUTIONS[0].id);
+  const [openId, setOpenId] = useState<string>('');
   return (
     <section id="services" className="bg-white py-14 sm:py-16 lg:py-20 px-6 sm:px-10 lg:px-14 border-t border-neutral-200/80">
       <div className="max-w-[1320px] mx-auto">

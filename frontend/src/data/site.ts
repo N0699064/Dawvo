@@ -5,7 +5,7 @@
  */
 
 export const CONTACT = {
-  email: 'info@davwoenergy.com',
+  email: 'ceo@davwoenergy.co.uk',
   location: 'Global Operations',
   platformUrl: 'https://davwo.com/en',
   marketplaceUrl: 'https://davwo.com/en/marketplace',
